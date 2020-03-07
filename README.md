@@ -1,4 +1,6 @@
-# TSDX Bootstrap
+# Robo-Wizard
+
+A library for building multi-step forms backed by a state machine using [robot](https://thisrobot.life).
 
 This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
 

@@ -27,8 +27,8 @@ type StepTransition<Values = BaseValues> =
     >;
 type StepConfig<Values = BaseValues> = {
   name: string;
-  next?: string | StepTransition<Values>[] | false;
-  previous?: string | StepTransition<Values>[];
+  next?: string | StepTransition<Values>[] | boolean;
+  previous?: string | StepTransition<Values>[] | boolean;
 };
 type FlowStep<Values = BaseValues> = string | StepConfig<Values>;
 
@@ -54,7 +54,10 @@ export function createFlow<Values = BaseValues>(
 
       if (step.previous && typeof step.previous === 'string') {
         transitions.push(transition('previous', step.previous));
-      } else if (step.name !== normalizedSteps[0].name) {
+      } else if (
+        step.previous !== false &&
+        step.name !== normalizedSteps[0].name
+      ) {
         transitions.push(
           transition('previous', normalizedSteps[index - 1].name)
         );
@@ -62,7 +65,10 @@ export function createFlow<Values = BaseValues>(
 
       if (step.next && typeof step.next === 'string') {
         transitions.push(transition('next', step.next, updateValues<Values>()));
-      } else if (step.name !== normalizedSteps[steps.length - 1].name) {
+      } else if (
+        step.next !== false &&
+        step.name !== normalizedSteps[steps.length - 1].name
+      ) {
         transitions.push(
           transition(
             'next',

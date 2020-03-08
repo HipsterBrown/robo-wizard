@@ -1,4 +1,4 @@
-import { createFlow } from '../src';
+import { createFlow, when, WhenFunction } from '../src';
 
 describe('createFlow', () => {
   describe('using array of strings', () => {
@@ -151,6 +151,45 @@ describe('createFlow', () => {
       expect(currentStep).toBe('second');
 
       update('previous');
+
+      expect(currentStep).toBe('third');
+    });
+  });
+
+  describe('steps with conditional next config', () => {
+    const initialValues = { skip: false };
+    type Values = typeof initialValues;
+    const skipIsTrue: WhenFunction<Values> = (values, { values: nextValues }) =>
+      ({ ...values, ...nextValues }.skip);
+    const steps = [
+      { name: 'first', next: [['third', when<Values>(skipIsTrue)], 'second'] },
+      'second',
+      'third',
+    ];
+
+    it('progresses forward conditionally', () => {
+      let currentStep;
+      let currentValues;
+      let update = (_event: { type: string; values?: Values }) => {};
+      const flow = createFlow(steps, initialValues);
+
+      flow.start((step, values, send) => {
+        currentStep = step;
+        currentValues = values;
+        update = send;
+      });
+
+      expect(currentValues).toMatchObject(initialValues);
+
+      update({ type: 'next' });
+
+      expect(currentStep).toBe('second');
+
+      update({ type: 'previous' });
+
+      expect(currentStep).toBe('first');
+
+      update({ type: 'next', values: { skip: true } });
 
       expect(currentStep).toBe('third');
     });

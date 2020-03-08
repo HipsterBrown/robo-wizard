@@ -3,7 +3,7 @@
 A library for building multi-step forms backed by a state machine using [robot](https://thisrobot.life).
 
 *TODO:*
-- [ ] support conditional step progression with `when` guard function
+- [X] support conditional step progression with `when` guard function
 - [ ] update `onChange` to pass object of values and functions to handler
 - [ ] update `onChange` handler arguments with `next` and `previous` helper functions
 - [ ] create `debug` action for transitions

@@ -1,14 +1,15 @@
 import {
   createMachine,
   transition,
+  guard,
   reduce,
   interpret,
   state,
   Transition,
   SendFunction,
-  GuardFunction,
-  ActionFunction,
-  ReduceFunction,
+  Guard,
+  Action,
+  Reducer,
   Machine,
   MachineState,
 } from 'robot3';
@@ -17,20 +18,16 @@ export type BaseValues = {
   [key: string]: any;
 };
 
-type StepTransition<Values = BaseValues> =
+export type StepTransition<Values = BaseValues> =
   | string
-  | Array<
-      | string
-      | GuardFunction<Values>
-      | ReduceFunction<Values>
-      | ActionFunction<Values>
-    >;
-type StepConfig<Values = BaseValues> = {
+  | Array<string | Guard<Values> | Reducer<Values> | Action<Values>>;
+export type StepConfig<Values = BaseValues> = {
   name: string;
   next?: string | StepTransition<Values>[] | boolean;
   previous?: string | StepTransition<Values>[] | boolean;
 };
-type FlowStep<Values = BaseValues> = string | StepConfig<Values>;
+
+export type FlowStep<Values = BaseValues> = string | StepConfig<Values>;
 
 export type ChangeHandler<Values = BaseValues> = (
   currentStep: string,
@@ -63,8 +60,27 @@ export function createFlow<Values = BaseValues>(
         );
       }
 
-      if (step.next && typeof step.next === 'string') {
-        transitions.push(transition('next', step.next, updateValues<Values>()));
+      if (step.next) {
+        if (typeof step.next === 'string') {
+          transitions.push(
+            transition('next', step.next, updateValues<Values>())
+          );
+        } else if (Array.isArray(step.next)) {
+          transitions.push(
+            ...step.next.map(nextStep => {
+              const [stepName, ...guardsOrReducers] =
+                typeof nextStep === 'string' ? [nextStep] : nextStep;
+              return transition(
+                'next',
+                stepName as string,
+                ...(guardsOrReducers as Array<
+                  Guard<Values> | Reducer<Values> | Action<Values>
+                >),
+                updateValues<Values>()
+              );
+            })
+          );
+        }
       } else if (
         step.next !== false &&
         step.name !== normalizedSteps[steps.length - 1].name
@@ -114,4 +130,15 @@ function updateValues<Values = BaseValues>() {
       ...newValues,
     };
   });
+}
+
+export type WhenFunction<Values = BaseValues> = (
+  values: Values,
+  event: UpdateEvent<Values>
+) => boolean;
+
+export function when<Values = BaseValues>(fn: WhenFunction<Values>) {
+  return guard<Values>((context, event) =>
+    fn(context, event as UpdateEvent<Values>)
+  );
 }

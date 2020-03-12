@@ -1,15 +1,15 @@
-import { createFlow, when, WhenFunction } from '../src';
+import { createWizard, when, WhenFunction } from '../src';
 
-describe('createFlow', () => {
+describe('createWizard', () => {
   describe('using array of strings', () => {
     const steps = ['first', 'second', 'third'];
 
     it('progresses forward linearly', () => {
       let currentStep;
       let update = (_transition: string) => {};
-      const flow = createFlow(steps);
+      const wizard = createWizard(steps);
 
-      flow.start((step, _values, send) => {
+      wizard.start(({ currentStep: step, send }) => {
         currentStep = step;
         update = send;
       });
@@ -46,10 +46,10 @@ describe('createFlow', () => {
     it('updates values during progression', () => {
       let currentValues;
       let update = (_event: { type: string; values?: object }) => {};
-      const flow = createFlow(steps);
+      const wizard = createWizard(steps);
 
-      flow.start((_step, _values, send) => {
-        currentValues = _values;
+      wizard.start(({ currentValues: values, send }) => {
+        currentValues = values;
         update = send;
       });
 
@@ -81,9 +81,9 @@ describe('createFlow', () => {
     it('progresses forward linearly', () => {
       let currentStep;
       let update = (_transition: string) => {};
-      const flow = createFlow(steps);
+      const wizard = createWizard(steps);
 
-      flow.start((step, _values, send) => {
+      wizard.start(({ currentStep: step, send }) => {
         currentStep = step;
         update = send;
       });
@@ -128,9 +128,9 @@ describe('createFlow', () => {
     it('progresses forward linearly', () => {
       let currentStep;
       let update = (_transition: string) => {};
-      const flow = createFlow(steps);
+      const wizard = createWizard(steps);
 
-      flow.start((step, _values, send) => {
+      wizard.start(({ currentStep: step, send }) => {
         currentStep = step;
         update = send;
       });
@@ -171,9 +171,9 @@ describe('createFlow', () => {
       let currentStep;
       let currentValues;
       let update = (_event: { type: string; values?: Values }) => {};
-      const flow = createFlow(steps, initialValues);
+      const wizard = createWizard(steps, initialValues);
 
-      flow.start((step, values, send) => {
+      wizard.start(({ currentStep: step, currentValues: values, send }) => {
         currentStep = step;
         currentValues = values;
         update = send;

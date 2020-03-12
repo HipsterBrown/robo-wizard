@@ -29,13 +29,13 @@ export type StepConfig<Values = BaseValues> = {
 
 export type FlowStep<Values = BaseValues> = string | StepConfig<Values>;
 
-export type ChangeHandler<Values = BaseValues> = (
-  currentStep: string,
-  currentValues: Values,
-  send: SendFunction
-) => void;
+export type ChangeHandler<Values = BaseValues> = (state: {
+  currentStep: string;
+  currentValues: Values;
+  send: SendFunction;
+}) => void;
 
-export function createFlow<Values = BaseValues>(
+export function createWizard<Values = BaseValues>(
   steps: FlowStep<Values>[],
   initialValues: Values = {} as Values
 ) {
@@ -111,11 +111,15 @@ export function createFlow<Values = BaseValues>(
       const service = interpret<typeof machine, 'next' | 'previous'>(
         machine,
         ({ machine: { current }, context, send }) => {
-          onChange(current, context, send);
+          onChange({ currentStep: current, currentValues: context, send });
         },
         values || initialValues
       );
-      onChange(service.machine.current, service.context, service.send);
+      onChange({
+        currentStep: service.machine.current,
+        currentValues: service.context,
+        send: service.send,
+      });
     },
   };
 }

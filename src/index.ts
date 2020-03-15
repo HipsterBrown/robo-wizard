@@ -33,6 +33,8 @@ export type ChangeHandler<Values = BaseValues> = (state: {
   currentStep: string;
   currentValues: Values;
   send: SendFunction;
+  goToNextStep(event?: { values?: Partial<Values> }): void;
+  goToPreviousStep(): void;
 }) => void;
 
 export function createWizard<Values = BaseValues>(
@@ -111,7 +113,17 @@ export function createWizard<Values = BaseValues>(
       const service = interpret<typeof machine, 'next' | 'previous'>(
         machine,
         ({ machine: { current }, context, send }) => {
-          onChange({ currentStep: current, currentValues: context, send });
+          onChange({
+            currentStep: current,
+            currentValues: context,
+            send,
+            goToNextStep(event = {}) {
+              send({ type: 'next', ...event });
+            },
+            goToPreviousStep(event = {}) {
+              send({ type: 'previous', ...event });
+            },
+          });
         },
         values || initialValues
       );
@@ -119,6 +131,12 @@ export function createWizard<Values = BaseValues>(
         currentStep: service.machine.current,
         currentValues: service.context,
         send: service.send,
+        goToNextStep(event = {}) {
+          service.send({ type: 'next', ...event });
+        },
+        goToPreviousStep(event = {}) {
+          service.send({ type: 'previous', ...event });
+        },
       });
     },
   };

@@ -6,38 +6,40 @@ describe('createWizard', () => {
 
     it('progresses forward linearly', () => {
       let currentStep;
-      let update = (_transition: string) => {};
+      let nextStep = (_event?: { values: object }) => {};
+      let previousStep = () => {};
       const wizard = createWizard(steps);
 
-      wizard.start(({ currentStep: step, send }) => {
+      wizard.start(({ currentStep: step, goToNextStep, goToPreviousStep }) => {
         currentStep = step;
-        update = send;
+        nextStep = goToNextStep;
+        previousStep = goToPreviousStep;
       });
 
       expect(currentStep).toBe('first');
 
-      update('next');
+      nextStep();
 
       expect(currentStep).toBe('second');
 
-      update('next');
+      nextStep();
 
       expect(currentStep).toBe('third');
 
-      update('next');
+      nextStep();
 
       // should not change
       expect(currentStep).toBe('third');
 
-      update('previous');
+      previousStep();
 
       expect(currentStep).toBe('second');
 
-      update('previous');
+      previousStep();
 
       expect(currentStep).toBe('first');
 
-      update('previous');
+      previousStep();
 
       // should not change
       expect(currentStep).toBe('first');
@@ -45,30 +47,34 @@ describe('createWizard', () => {
 
     it('updates values during progression', () => {
       let currentValues;
-      let update = (_event: { type: string; values?: object }) => {};
+      let nextStep = (_event: { values?: object }) => {};
+      let previousStep = () => {};
       const wizard = createWizard(steps);
 
-      wizard.start(({ currentValues: values, send }) => {
-        currentValues = values;
-        update = send;
-      });
+      wizard.start(
+        ({ currentValues: values, goToNextStep, goToPreviousStep }) => {
+          currentValues = values;
+          nextStep = goToNextStep;
+          previousStep = goToPreviousStep;
+        }
+      );
 
       expect(currentValues).toMatchObject({});
 
-      update({ type: 'next', values: { test: 'string' } });
+      nextStep({ values: { test: 'string' } });
 
       expect(currentValues).toMatchObject({ test: 'string' });
 
-      update({ type: 'next', values: { another: 'value' } });
+      nextStep({ values: { another: 'value' } });
 
       expect(currentValues).toMatchObject({ test: 'string', another: 'value' });
 
-      update({ type: 'next', values: { nothing: 'doing' } });
+      nextStep({ values: { nothing: 'doing' } });
 
       // should not update because no progress forward
       expect(currentValues).toMatchObject({ test: 'string', another: 'value' });
 
-      update({ type: 'previous' });
+      previousStep();
 
       // does not update values
       expect(currentValues).toMatchObject({ test: 'string', another: 'value' });
@@ -80,38 +86,40 @@ describe('createWizard', () => {
 
     it('progresses forward linearly', () => {
       let currentStep;
-      let update = (_transition: string) => {};
+      let next = () => {};
+      let previous = () => {};
       const wizard = createWizard(steps);
 
-      wizard.start(({ currentStep: step, send }) => {
+      wizard.start(({ currentStep: step, goToNextStep, goToPreviousStep }) => {
         currentStep = step;
-        update = send;
+        next = goToNextStep;
+        previous = goToPreviousStep;
       });
 
       expect(currentStep).toBe('first');
 
-      update('next');
+      next();
 
       expect(currentStep).toBe('second');
 
-      update('next');
+      next();
 
       expect(currentStep).toBe('third');
 
-      update('next');
+      next();
 
       // should not change
       expect(currentStep).toBe('third');
 
-      update('previous');
+      previous();
 
       expect(currentStep).toBe('second');
 
-      update('previous');
+      previous();
 
       expect(currentStep).toBe('first');
 
-      update('previous');
+      previous();
 
       // should not change
       expect(currentStep).toBe('first');
@@ -127,30 +135,32 @@ describe('createWizard', () => {
 
     it('progresses forward linearly', () => {
       let currentStep;
-      let update = (_transition: string) => {};
+      let next = () => {};
+      let previous = () => {};
       const wizard = createWizard(steps);
 
-      wizard.start(({ currentStep: step, send }) => {
+      wizard.start(({ currentStep: step, goToNextStep, goToPreviousStep }) => {
         currentStep = step;
-        update = send;
+        next = goToNextStep;
+        previous = goToPreviousStep;
       });
 
       expect(currentStep).toBe('first');
 
-      update('next');
+      next();
 
       expect(currentStep).toBe('third');
 
-      update('previous');
+      previous();
 
       expect(currentStep).toBe('second');
 
-      update('next');
+      next();
 
       // should not change
       expect(currentStep).toBe('second');
 
-      update('previous');
+      previous();
 
       expect(currentStep).toBe('third');
     });
@@ -170,26 +180,35 @@ describe('createWizard', () => {
     it('progresses forward conditionally', () => {
       let currentStep;
       let currentValues;
-      let update = (_event: { type: string; values?: Values }) => {};
+      let next = (_event?: { values?: Values }) => {};
+      let previous = () => {};
       const wizard = createWizard(steps, initialValues);
 
-      wizard.start(({ currentStep: step, currentValues: values, send }) => {
-        currentStep = step;
-        currentValues = values;
-        update = send;
-      });
+      wizard.start(
+        ({
+          currentStep: step,
+          currentValues: values,
+          goToNextStep,
+          goToPreviousStep,
+        }) => {
+          currentStep = step;
+          currentValues = values;
+          next = goToNextStep;
+          previous = goToPreviousStep;
+        }
+      );
 
       expect(currentValues).toMatchObject(initialValues);
 
-      update({ type: 'next' });
+      next();
 
       expect(currentStep).toBe('second');
 
-      update({ type: 'previous' });
+      previous();
 
       expect(currentStep).toBe('first');
 
-      update({ type: 'next', values: { skip: true } });
+      next({ values: { skip: true } });
 
       expect(currentStep).toBe('third');
     });

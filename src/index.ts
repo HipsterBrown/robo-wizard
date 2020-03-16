@@ -6,12 +6,12 @@ import {
   interpret,
   state,
   Transition,
-  SendFunction,
   Guard,
   Action,
   Reducer,
   Machine,
   MachineState,
+  Service,
 } from 'robot3';
 
 export type BaseValues = {
@@ -29,13 +29,51 @@ export type StepConfig<Values = BaseValues> = {
 
 export type FlowStep<Values = BaseValues> = string | StepConfig<Values>;
 
-export type ChangeHandler<Values = BaseValues> = (state: {
-  currentStep: string;
-  currentValues: Values;
-  send: SendFunction;
-  goToNextStep(event?: { values?: Partial<Values> }): void;
-  goToPreviousStep(): void;
-}) => void;
+type ChangeHandler<StepMachine extends Machine, Values = BaseValues> = (
+  wizard: RoboWizard<StepMachine, Values>
+) => void;
+
+class RoboWizard<StepMachine extends Machine, Values = BaseValues> {
+  private _service?: Service<StepMachine>;
+
+  constructor(private machine: StepMachine) {}
+
+  public start(onChange: ChangeHandler<StepMachine, Values>, values?: Values) {
+    this._service = interpret<StepMachine, 'next' | 'previous'>(
+      this.machine,
+      () => {
+        onChange(this);
+      },
+      values || this.machine.context
+    );
+    onChange(this);
+  }
+
+  get currentStep() {
+    return this.service.machine.current;
+  }
+
+  get currentValues() {
+    return this.service.context;
+  }
+
+  public goToNextStep(event: Partial<UpdateEvent<Values>> = {}) {
+    this.service.send({ type: 'next', ...event });
+  }
+
+  public goToPreviousStep(event: Partial<UpdateEvent<Values>> = {}) {
+    this.service.send({ type: 'previous', ...event });
+  }
+
+  private get service() {
+    if (typeof this._service === 'undefined') {
+      throw new Error(
+        'Please call "start" before any other method or property.'
+      );
+    }
+    return this._service;
+  }
+}
 
 export function createWizard<Values = BaseValues>(
   steps: FlowStep<Values>[],
@@ -108,38 +146,7 @@ export function createWizard<Values = BaseValues>(
     string
   >;
 
-  return {
-    start(onChange: ChangeHandler<Values>, values?: Values) {
-      const service = interpret<typeof machine, 'next' | 'previous'>(
-        machine,
-        ({ machine: { current }, context, send }) => {
-          onChange({
-            currentStep: current,
-            currentValues: context,
-            send,
-            goToNextStep(event = {}) {
-              send({ type: 'next', ...event });
-            },
-            goToPreviousStep(event = {}) {
-              send({ type: 'previous', ...event });
-            },
-          });
-        },
-        values || initialValues
-      );
-      onChange({
-        currentStep: service.machine.current,
-        currentValues: service.context,
-        send: service.send,
-        goToNextStep(event = {}) {
-          service.send({ type: 'next', ...event });
-        },
-        goToPreviousStep(event = {}) {
-          service.send({ type: 'previous', ...event });
-        },
-      });
-    },
-  };
+  return new RoboWizard<typeof machine, Values>(machine);
 }
 
 type UpdateEvent<Values> = { values: Values };

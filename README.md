@@ -5,8 +5,9 @@ A library for building multi-step forms backed by a state machine using [robot](
 *TODO:*
 - [X] support conditional step progression with `when` guard function
 - [X] add GitHub Actions CI for tests + linting
-- [ ] update `onChange` to pass object of values and functions to handler
-- [ ] update `onChange` handler arguments with `next` and `previous` helper functions
+- [X] update `onChange` to pass object of values and functions to handler
+- [X] update `onChange` handler arguments with `goToNextStep` and `goToPreviousStep` helper functions
+- [X] augement result of createWizard to be object / class to be passed into OnChangeHandler
 - [ ] create `debug` action for transitions
 - [ ] add example of usage of HTML + JS
 - [ ] add example of JS framework integration

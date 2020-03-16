@@ -10,10 +10,10 @@ describe('createWizard', () => {
       let previousStep = () => {};
       const wizard = createWizard(steps);
 
-      wizard.start(({ currentStep: step, goToNextStep, goToPreviousStep }) => {
-        currentStep = step;
-        nextStep = goToNextStep;
-        previousStep = goToPreviousStep;
+      wizard.start(wiz => {
+        currentStep = wiz.currentStep;
+        nextStep = wiz.goToNextStep.bind(wiz);
+        previousStep = wiz.goToPreviousStep.bind(wiz);
       });
 
       expect(currentStep).toBe('first');
@@ -51,13 +51,11 @@ describe('createWizard', () => {
       let previousStep = () => {};
       const wizard = createWizard(steps);
 
-      wizard.start(
-        ({ currentValues: values, goToNextStep, goToPreviousStep }) => {
-          currentValues = values;
-          nextStep = goToNextStep;
-          previousStep = goToPreviousStep;
-        }
-      );
+      wizard.start(wiz => {
+        currentValues = wiz.currentValues;
+        nextStep = wiz.goToNextStep.bind(wiz);
+        previousStep = wiz.goToPreviousStep.bind(wiz);
+      });
 
       expect(currentValues).toMatchObject({});
 
@@ -85,44 +83,36 @@ describe('createWizard', () => {
     const steps = [{ name: 'first' }, { name: 'second' }, { name: 'third' }];
 
     it('progresses forward linearly', () => {
-      let currentStep;
-      let next = () => {};
-      let previous = () => {};
       const wizard = createWizard(steps);
+      wizard.start(() => {});
 
-      wizard.start(({ currentStep: step, goToNextStep, goToPreviousStep }) => {
-        currentStep = step;
-        next = goToNextStep;
-        previous = goToPreviousStep;
-      });
+      expect(wizard.currentStep).toBe('first');
 
-      expect(currentStep).toBe('first');
+      wizard.goToNextStep();
 
-      next();
+      expect(wizard.currentStep).toBe('second');
 
-      expect(currentStep).toBe('second');
+      wizard.goToNextStep();
 
-      next();
+      expect(wizard.currentStep).toBe('third');
 
-      expect(currentStep).toBe('third');
-
-      next();
+      wizard.goToNextStep();
 
       // should not change
-      expect(currentStep).toBe('third');
+      expect(wizard.currentStep).toBe('third');
 
-      previous();
+      wizard.goToPreviousStep();
 
-      expect(currentStep).toBe('second');
+      expect(wizard.currentStep).toBe('second');
 
-      previous();
+      wizard.goToPreviousStep();
 
-      expect(currentStep).toBe('first');
+      expect(wizard.currentStep).toBe('first');
 
-      previous();
+      wizard.goToPreviousStep();
 
       // should not change
-      expect(currentStep).toBe('first');
+      expect(wizard.currentStep).toBe('first');
     });
   });
 
@@ -134,35 +124,27 @@ describe('createWizard', () => {
     ];
 
     it('progresses forward linearly', () => {
-      let currentStep;
-      let next = () => {};
-      let previous = () => {};
       const wizard = createWizard(steps);
+      wizard.start(() => {});
 
-      wizard.start(({ currentStep: step, goToNextStep, goToPreviousStep }) => {
-        currentStep = step;
-        next = goToNextStep;
-        previous = goToPreviousStep;
-      });
+      expect(wizard.currentStep).toBe('first');
 
-      expect(currentStep).toBe('first');
+      wizard.goToNextStep();
 
-      next();
+      expect(wizard.currentStep).toBe('third');
 
-      expect(currentStep).toBe('third');
+      wizard.goToPreviousStep();
 
-      previous();
+      expect(wizard.currentStep).toBe('second');
 
-      expect(currentStep).toBe('second');
-
-      next();
+      wizard.goToNextStep();
 
       // should not change
-      expect(currentStep).toBe('second');
+      expect(wizard.currentStep).toBe('second');
 
-      previous();
+      wizard.goToPreviousStep();
 
-      expect(currentStep).toBe('third');
+      expect(wizard.currentStep).toBe('third');
     });
   });
 
@@ -178,39 +160,23 @@ describe('createWizard', () => {
     ];
 
     it('progresses forward conditionally', () => {
-      let currentStep;
-      let currentValues;
-      let next = (_event?: { values?: Values }) => {};
-      let previous = () => {};
       const wizard = createWizard(steps, initialValues);
 
-      wizard.start(
-        ({
-          currentStep: step,
-          currentValues: values,
-          goToNextStep,
-          goToPreviousStep,
-        }) => {
-          currentStep = step;
-          currentValues = values;
-          next = goToNextStep;
-          previous = goToPreviousStep;
-        }
-      );
+      wizard.start(() => {});
 
-      expect(currentValues).toMatchObject(initialValues);
+      expect(wizard.currentValues).toMatchObject(initialValues);
 
-      next();
+      wizard.goToNextStep();
 
-      expect(currentStep).toBe('second');
+      expect(wizard.currentStep).toBe('second');
 
-      previous();
+      wizard.goToPreviousStep();
 
-      expect(currentStep).toBe('first');
+      expect(wizard.currentStep).toBe('first');
 
-      next({ values: { skip: true } });
+      wizard.goToNextStep({ values: { skip: true } });
 
-      expect(currentStep).toBe('third');
+      expect(wizard.currentStep).toBe('third');
     });
   });
 });

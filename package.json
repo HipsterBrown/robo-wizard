@@ -36,6 +36,6 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "robot3": "^0.2.13"
+    "robot3": "^0.2.17"
   }
 }

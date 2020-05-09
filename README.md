@@ -9,7 +9,7 @@ A library for building multi-step forms backed by a state machine using [robot](
 - [X] update `onChange` handler arguments with `goToNextStep` and `goToPreviousStep` helper functions
 - [X] augement result of createWizard to be object / class to be passed into OnChangeHandler
 - [X] add example of usage of HTML + JS
-- [ ] add example of JS framework integration
+- [X] add example of JS framework integration
 - [ ] generate typedoc site, deploy to gh-pages
 - [ ] use semantic-release to auto-publish 1.0
 

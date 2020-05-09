@@ -39,6 +39,7 @@ class RoboWizard<StepMachine extends Machine, Values = BaseValues> {
   constructor(private machine: StepMachine) {}
 
   public start(onChange: ChangeHandler<StepMachine, Values>, values?: Values) {
+    if (this._service) return;
     this._service = interpret<StepMachine, 'next' | 'previous'>(
       this.machine,
       () => {

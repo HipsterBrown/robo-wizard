@@ -8,14 +8,18 @@ A library for building multi-step forms backed by a state machine using [robot](
 - [X] update `onChange` to pass object of values and functions to handler
 - [X] update `onChange` handler arguments with `goToNextStep` and `goToPreviousStep` helper functions
 - [X] augement result of createWizard to be object / class to be passed into OnChangeHandler
-- [ ] add example of usage of HTML + JS
+- [X] add example of usage of HTML + JS
 - [ ] add example of JS framework integration
 - [ ] generate typedoc site, deploy to gh-pages
 - [ ] use semantic-release to auto-publish 1.0
 
-This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
+## Examples
+
+Check out the [examples](./examples/) directory to see a sample of usage.
 
 ## Local Development
+
+This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
 
 Below is a list of commands you will probably find useful.
 

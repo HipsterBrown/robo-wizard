@@ -1,0 +1,14 @@
+{
+  "name": "robo-wizard-html-example",
+  "version": "0.0.0-example",
+  "description": "An html example for robo-wizard multi-step form",
+  "main": "app.js",
+  "scripts": {
+    "start": "parcel index.html --host 0.0.0.0"
+  },
+  "author": "HipsterBrown",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}

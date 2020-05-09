@@ -2,3 +2,5 @@
 .DS_Store
 node_modules
 dist
+examples/**/package-lock.json
+examples/**/.cache

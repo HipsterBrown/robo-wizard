@@ -1,0 +1,151 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>robo-wizard</title>
+	<meta name="description" content="Documentation for robo-wizard">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">robo-wizard</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>robo-wizard</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#robo-wizard" id="robo-wizard" style="color: inherit; text-decoration: none;">
+					<h1>Robo-Wizard</h1>
+				</a>
+				<p>A library for building multi-step forms backed by a state machine using <a href="https://thisrobot.life">robot</a>.</p>
+				<p><em>TODO:</em></p>
+				<ul>
+					<li><input checked="" disabled="" type="checkbox"> support conditional step progression with <code>when</code> guard function</li>
+					<li><input checked="" disabled="" type="checkbox"> add GitHub Actions CI for tests + linting</li>
+					<li><input checked="" disabled="" type="checkbox"> update <code>onChange</code> to pass object of values and functions to handler</li>
+					<li><input checked="" disabled="" type="checkbox"> update <code>onChange</code> handler arguments with <code>goToNextStep</code> and <code>goToPreviousStep</code> helper functions</li>
+					<li><input checked="" disabled="" type="checkbox"> augement result of createWizard to be object / class to be passed into OnChangeHandler</li>
+					<li><input checked="" disabled="" type="checkbox"> add example of usage of HTML + JS</li>
+					<li><input checked="" disabled="" type="checkbox"> add example of JS framework integration</li>
+					<li><input disabled="" type="checkbox"> generate typedoc site, deploy to gh-pages</li>
+					<li><input disabled="" type="checkbox"> use semantic-release to auto-publish 1.0</li>
+				</ul>
+				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+					<h2>Examples</h2>
+				</a>
+				<p>Check out the <a href="./examples/">examples</a> directory to see a sample of usage.</p>
+				<a href="#local-development" id="local-development" style="color: inherit; text-decoration: none;">
+					<h2>Local Development</h2>
+				</a>
+				<p>This project was bootstrapped with <a href="https://github.com/jaredpalmer/tsdx">TSDX</a>.</p>
+				<p>Below is a list of commands you will probably find useful.</p>
+				<a href="#npm-start-or-yarn-start" id="npm-start-or-yarn-start" style="color: inherit; text-decoration: none;">
+					<h3><code>npm start</code> or <code>yarn start</code></h3>
+				</a>
+				<p>Runs the project in development/watch mode. Your project will be rebuilt upon changes. TSDX has a special logger for you convenience. Error messages are pretty printed and formatted for compatibility VS Code&#39;s Problems tab.</p>
+				<img src="https://user-images.githubusercontent.com/4060187/52168303-574d3a00-26f6-11e9-9f3b-71dbec9ebfcb.gif" width="600" />
+				<p>Your library will be rebuilt if you make edits.</p>
+				<a href="#npm-run-build-or-yarn-build" id="npm-run-build-or-yarn-build" style="color: inherit; text-decoration: none;">
+					<h3><code>npm run build</code> or <code>yarn build</code></h3>
+				</a>
+				<p>Bundles the package to the <code>dist</code> folder.
+				The package is optimized and bundled with Rollup into multiple formats (CommonJS, UMD, and ES Module).</p>
+				<img src="https://user-images.githubusercontent.com/4060187/52168322-a98e5b00-26f6-11e9-8cf6-222d716b75ef.gif" width="600" />
+				<a href="#npm-test-or-yarn-test" id="npm-test-or-yarn-test" style="color: inherit; text-decoration: none;">
+					<h3><code>npm test</code> or <code>yarn test</code></h3>
+				</a>
+				<p>Runs the test watcher (Jest) in an interactive mode.
+				By default, runs tests related to files changed since the last commit.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_index_.html">&quot;index&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

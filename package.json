@@ -3,15 +3,15 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
+    "build:docs": "typedoc --stripInternal --out docs src",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "prepare": "tsdx build"
+    "prepare": "tsdx build",
+    "prepublish": "tsdx build"
   },
   "peerDependencies": {},
   "husky": {
@@ -33,6 +33,7 @@
     "husky": "^4.2.3",
     "tsdx": "^0.12.3",
     "tslib": "^1.11.1",
+    "typedoc": "^0.17.6",
     "typescript": "^3.8.3"
   },
   "dependencies": {

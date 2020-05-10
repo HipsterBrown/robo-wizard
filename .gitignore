@@ -5,3 +5,4 @@ dist
 examples/**/package-lock.json
 examples/**/.cache
 docs/
+_site/

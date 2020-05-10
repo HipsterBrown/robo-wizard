@@ -7,7 +7,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "build:docs": "typedoc --stripInternal --out docs src",
+    "build:docs": "typedoc --stripInternal --out _site src",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",

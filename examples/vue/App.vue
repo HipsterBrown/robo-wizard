@@ -60,8 +60,8 @@
           <button type="submit" class="py-3 px-8 border-2 border-gray-900">
           Next
         </button>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
 </template>
 

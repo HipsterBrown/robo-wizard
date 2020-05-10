@@ -4,3 +4,4 @@ node_modules
 dist
 examples/**/package-lock.json
 examples/**/.cache
+docs/

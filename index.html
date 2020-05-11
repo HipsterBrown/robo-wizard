@@ -68,22 +68,58 @@
 					<h1>Robo-Wizard</h1>
 				</a>
 				<p>A library for building multi-step forms backed by a state machine using <a href="https://thisrobot.life">robot</a>.</p>
-				<p><em>TODO:</em></p>
-				<ul>
-					<li><input checked="" disabled="" type="checkbox"> support conditional step progression with <code>when</code> guard function</li>
-					<li><input checked="" disabled="" type="checkbox"> add GitHub Actions CI for tests + linting</li>
-					<li><input checked="" disabled="" type="checkbox"> update <code>onChange</code> to pass object of values and functions to handler</li>
-					<li><input checked="" disabled="" type="checkbox"> update <code>onChange</code> handler arguments with <code>goToNextStep</code> and <code>goToPreviousStep</code> helper functions</li>
-					<li><input checked="" disabled="" type="checkbox"> augement result of createWizard to be object / class to be passed into OnChangeHandler</li>
-					<li><input checked="" disabled="" type="checkbox"> add example of usage of HTML + JS</li>
-					<li><input checked="" disabled="" type="checkbox"> add example of JS framework integration</li>
-					<li><input disabled="" type="checkbox"> generate typedoc site, deploy to gh-pages</li>
-					<li><input disabled="" type="checkbox"> use semantic-release to auto-publish 1.0</li>
-				</ul>
+				<p><strong>Installation</strong></p>
+				<p>This package is written in TypeScript so type definitions are included by default:</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> robo-wizard</code></pre><pre><code>yarn <span class="hljs-keyword">add</span><span class="bash"> robo-wizard</span></code></pre><p><strong>Basic usage:</strong></p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { createWizard } <span class="hljs-keyword">from</span> <span class="hljs-string">'robo-wizard'</span>;
+
+<span class="hljs-keyword">const</span> wizard = createWizard([<span class="hljs-string">'first'</span>, <span class="hljs-string">'second'</span>, <span class="hljs-string">'third'</span>]);
+wizard.start(<span class="hljs-function"><span class="hljs-params">updatedWizard</span> =&gt;</span> { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Updated!'</span>, updatedWizard.currentStep) });
+
+<span class="hljs-built_in">console</span>.log(wizard.currentStep); <span class="hljs-comment">// first</span>
+
+wizard.goToNextStep();
+
+<span class="hljs-built_in">console</span>.log(wizard.currentStep); <span class="hljs-comment">// second</span>
+
+wizard.goToNextStep();
+
+<span class="hljs-built_in">console</span>.log(wizard.currentStep); <span class="hljs-comment">// third</span>
+
+wizard.goToPreviousStep();
+
+<span class="hljs-built_in">console</span>.log(wizard.currentStep); <span class="hljs-comment">// second</span></code></pre>
+				<p><strong>Gathering values:</strong></p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { createWizard } <span class="hljs-keyword">from</span> <span class="hljs-string">'robo-wizard'</span>;
+
+<span class="hljs-keyword">const</span> wizard = createWizard([<span class="hljs-string">'first'</span>, <span class="hljs-string">'second'</span>, <span class="hljs-string">'third'</span>], { firstName: <span class="hljs-string">''</span>, lastName: <span class="hljs-string">''</span> });
+wizard.start(<span class="hljs-function"><span class="hljs-params">updatedWizard</span> =&gt;</span> { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Updated!'</span>, updatedWizard.currentStep), updatedWizard.currentValues });
+
+<span class="hljs-built_in">console</span>.log(wizard.currentValues); <span class="hljs-comment">// { firstName: '', lastName: '' }</span>
+
+wizard.goToNextStep({ values: { firstName: <span class="hljs-string">'Jane'</span> } });
+
+<span class="hljs-built_in">console</span>.log(wizard.currentValues); <span class="hljs-comment">// { firstName: 'Jane', lastName: '' }</span>
+
+wizard.goToNextStep({ values: { lastName: <span class="hljs-string">'Doe'</span> } });
+
+<span class="hljs-built_in">console</span>.log(wizard.currentValues); <span class="hljs-comment">// { firstName: 'Jane', lastName: 'Doe' }</span>
+
+wizard.goToPreviousStep({ values: { firstName: <span class="hljs-string">''</span>, lastName: <span class="hljs-string">''</span> } });
+
+<span class="hljs-built_in">console</span>.log(wizard.currentValues); <span class="hljs-comment">// { firstName: '', lastName: '' }</span></code></pre>
 				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
 					<h2>Examples</h2>
 				</a>
-				<p>Check out the <a href="./examples/">examples</a> directory to see a sample of usage.</p>
+				<p>Check out the <a href="./examples/">examples</a> directory to see a sample of usage with HTML and a few framework integrations.</p>
+				<a href="#work-in-progress-roadmap" id="work-in-progress-roadmap" style="color: inherit; text-decoration: none;">
+					<h2>Work In Progress Roadmap</h2>
+				</a>
+				<ul>
+					<li><input disabled="" type="checkbox"> <code>createForm</code> state machine generator to control form state for a step in the wizard</li>
+					<li><input disabled="" type="checkbox"> example integration of routed wizard steps, i.e. using <code>react-router</code> or <code>history</code> packages</li>
+					<li><input disabled="" type="checkbox"> add history stack to internal state machine to lookup the previous step when using custom progression</li>
+				</ul>
 				<a href="#local-development" id="local-development" style="color: inherit; text-decoration: none;">
 					<h2>Local Development</h2>
 				</a>

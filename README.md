@@ -2,20 +2,72 @@
 
 A library for building multi-step forms backed by a state machine using [robot](https://thisrobot.life).
 
-*TODO:*
-- [X] support conditional step progression with `when` guard function
-- [X] add GitHub Actions CI for tests + linting
-- [X] update `onChange` to pass object of values and functions to handler
-- [X] update `onChange` handler arguments with `goToNextStep` and `goToPreviousStep` helper functions
-- [X] augement result of createWizard to be object / class to be passed into OnChangeHandler
-- [X] add example of usage of HTML + JS
-- [X] add example of JS framework integration
-- [ ] generate typedoc site, deploy to gh-pages
-- [ ] use semantic-release to auto-publish 1.0
+**Installation**
+
+This package is written in TypeScript so type definitions are included by default:
+```
+npm install robo-wizard
+```
+
+```
+yarn add robo-wizard
+```
+
+**Basic usage:**
+
+```typescript
+import { createWizard } from 'robo-wizard';
+
+const wizard = createWizard(['first', 'second', 'third']);
+wizard.start(updatedWizard => { console.log('Updated!', updatedWizard.currentStep) });
+
+console.log(wizard.currentStep); // first
+
+wizard.goToNextStep();
+
+console.log(wizard.currentStep); // second
+
+wizard.goToNextStep();
+
+console.log(wizard.currentStep); // third
+
+wizard.goToPreviousStep();
+
+console.log(wizard.currentStep); // second
+```
+
+**Gathering values:**
+
+```typescript
+import { createWizard } from 'robo-wizard';
+
+const wizard = createWizard(['first', 'second', 'third'], { firstName: '', lastName: '' });
+wizard.start(updatedWizard => { console.log('Updated!', updatedWizard.currentStep), updatedWizard.currentValues });
+
+console.log(wizard.currentValues); // { firstName: '', lastName: '' }
+
+wizard.goToNextStep({ values: { firstName: 'Jane' } });
+
+console.log(wizard.currentValues); // { firstName: 'Jane', lastName: '' }
+
+wizard.goToNextStep({ values: { lastName: 'Doe' } });
+
+console.log(wizard.currentValues); // { firstName: 'Jane', lastName: 'Doe' }
+
+wizard.goToPreviousStep({ values: { firstName: '', lastName: '' } });
+
+console.log(wizard.currentValues); // { firstName: '', lastName: '' }
+```
 
 ## Examples
 
-Check out the [examples](./examples/) directory to see a sample of usage.
+Check out the [examples](./examples/) directory to see a sample of usage with HTML and a few framework integrations.
+
+## Work In Progress Roadmap
+
+- [ ] `createForm` state machine generator to control form state for a step in the wizard
+- [ ] example integration of routed wizard steps, i.e. using `react-router` or `history` packages
+- [ ] add history stack to internal state machine to lookup the previous step when using custom progression
 
 ## Local Development
 

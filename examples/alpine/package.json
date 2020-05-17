@@ -1,0 +1,17 @@
+{
+  "name": "robo-wizard-alpine-example",
+  "version": "0.0.0-example",
+  "description": "Example usage of robo-wizard with alpine.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html --host 0.0.0.0"
+  },
+  "author": "HipsterBrown",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "alpinejs": "^2.3.5"
+  }
+}

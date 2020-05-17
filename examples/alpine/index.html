@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Robo-Wizard Example App</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="px-5" x-data="{ wizard: createWizard(['first', 'second', 'third'], { firstName: '', lastName: '' }) }" x-init="wizard.start((wiz) => $data.wizard = Object.create(wiz))">
+      <h1 class="text-2xl font-bold">Robo Wizard</h1>
+
+      <p class="font-semibold mb-8 underline uppercase">
+        <span x-text="wizard.currentStep"></span> step
+      </p>
+
+      <form @submit.prevent="wizard.goToNextStep({ values: Array.from(new FormData($event.target).entries()).reduce((values, field) => ({ ...values, [field[0]]: field[1] }), {}) })" class="mb-4">
+        <div class="mb-6" x-show="wizard.currentStep === 'first'">
+          <label for="firstName" id="firstName-label" class="block mb-2">First Name:</label>
+          <input class="border-2 border-solid border-gray-600 px-4 py-2" type="text" name="firstName" id="firstName" aria-label="firstName-label" x-bind:value="wizard.currentValues.firstName" />
+        </div>
+
+        <div class="mb-6" x-show="wizard.currentStep === 'second'">
+          <label for="lastName" id="lastName-label" class="block mb-2">Last Name:</label>
+          <input class="border-2 border-solid border-gray-600 px-4 py-2" type="text" name="lastName" id="lastName" aria-label="lastName-label" x-bind:value="wizard.currentValues.lastName" />
+        </div>
+
+        <div class="mb-6" x-show="wizard.currentStep === 'third'">
+          <p class="text-green-600">Welcome <span x-text="wizard.currentValues.firstName"></span> <span x-text="wizard.currentValues.lastName"></span>!</p>
+        </div>
+
+        <div class="flex w-32 justify-between">
+          <button type="button" @click="wizard.goToPreviousStep()" class="p-3 mr-4">
+            Previous
+          </button>
+          <button type="submit" class="py-3 px-8 border-2 border-gray-900">
+            Next
+          </button>
+        </div>
+      </form>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

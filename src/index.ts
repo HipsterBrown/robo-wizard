@@ -85,6 +85,9 @@ class RoboWizard<StepMachine extends Machine, Values = BaseValues> {
   private _service?: Service<StepMachine>;
 
   /** @ignore */
+  private _onTransition?: (wizard: RoboWizard<StepMachine, Values>) => void;
+
+  /** @ignore */
   constructor(private machine: StepMachine) {}
 
   /**
@@ -98,11 +101,18 @@ class RoboWizard<StepMachine extends Machine, Values = BaseValues> {
     this._service = interpret<StepMachine, 'next' | 'previous'>(
       this.machine,
       () => {
+        if (this._onTransition) this._onTransition(this);
         onChange(this);
       },
       values || this.machine.context
     );
     onChange(this);
+  }
+
+  public onTransition(
+    transitionFn: (wizard: RoboWizard<StepMachine, Values>) => void
+  ) {
+    this._onTransition = transitionFn;
   }
 
   /**
@@ -133,6 +143,10 @@ class RoboWizard<StepMachine extends Machine, Values = BaseValues> {
    */
   public goToPreviousStep(event: Partial<UpdateEvent<Values>> = {}) {
     this.service.send({ type: 'previous', ...event });
+  }
+
+  public sync(event: { step: string }) {
+    this.service.send({ type: 'sync', ...event });
   }
 
   /** @ignore */
@@ -303,6 +317,11 @@ export function createWizard<Values = BaseValues>(
           )
         );
       }
+      transitions.push(
+        ...normalizedSteps.map(({ name }) =>
+          transition('sync', name, guardSync(name))
+        )
+      );
 
       return {
         ...config,
@@ -334,6 +353,15 @@ function updateValues<Values = BaseValues>() {
       ...currentValues,
       ...newValues,
     };
+  });
+}
+
+/**
+ * @internal
+ */
+function guardSync(stepName: string) {
+  return guard((_, event) => {
+    return (event as { step: string }).step === stepName;
   });
 }
 

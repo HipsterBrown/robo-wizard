@@ -9,7 +9,9 @@ function useWizard<Values = BaseValues>(
   const [_, refreshState] = React.useState<boolean>(false);
   const [currentWizard, setWizard] = React.useState(() => {
     const wizard = createWizard<Values>(steps, initialValues);
-    wizard.start(() => refreshState(s => !s));
+    wizard.start(() => {
+      refreshState(s => !s);
+    });
     return wizard;
   });
   return currentWizard;
@@ -21,7 +23,23 @@ type Values = {
 };
 
 const App: React.FC = () => {
-  const wizard = useWizard<Values>(['first', 'second', 'third']);
+  const wizard = useWizard<Values>(['first', 'second', 'third'], {
+    firstName: '',
+    lastName: '',
+  });
+
+  React.useEffect(() => {
+    if (window.location.pathname.split('/').pop() !== wizard.currentStep) {
+      wizard.sync({ step: window.location.pathname.split('/').pop() });
+    }
+
+    window.addEventListener('popstate', () => {
+      wizard.sync({ step: window.location.pathname.split('/').pop() });
+    });
+    wizard.onTransition(nextWiz =>
+      history.pushState(null, nextWiz.currentStep, `/${nextWiz.currentStep}`)
+    );
+  }, []);
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = event => {
     event.preventDefault();

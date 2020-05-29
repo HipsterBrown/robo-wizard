@@ -179,4 +179,41 @@ describe('createWizard', () => {
       expect(wizard.currentStep).toBe('third');
     });
   });
+
+  describe('#sync', () => {
+    const steps = ['first', 'second', 'third'];
+
+    it('transitions immediate to passed in step', () => {
+      const wizard = createWizard(steps);
+      wizard.start(() => {});
+
+      expect(wizard.currentStep).toBe('first');
+
+      wizard.sync({ step: 'third' });
+
+      expect(wizard.currentStep).toBe('third');
+
+      wizard.sync({ step: 'zero' });
+
+      expect(wizard.currentStep).toBe('third');
+    });
+  });
+
+  describe('#onTransition', () => {
+    const steps = ['first', 'second', 'third'];
+
+    it('sets a callback when the wizard is updated', () => {
+      const transitionListener = jest.fn();
+      const wizard = createWizard(steps);
+      wizard.onTransition(transitionListener);
+      wizard.start(() => {});
+
+      expect(transitionListener).not.toHaveBeenCalled();
+
+      wizard.goToNextStep();
+
+      expect(transitionListener).toHaveBeenCalledTimes(1);
+      expect(transitionListener.mock.calls[0][0].currentStep).toBe('second');
+    });
+  });
 });

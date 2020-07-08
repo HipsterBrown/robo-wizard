@@ -3,7 +3,9 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build -i src/index.ts --name RoboWizard --format cjs,esm,umd",
@@ -11,7 +13,6 @@
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
-    "prepublish": "tsdx build",
     "semantic-release": "semantic-release"
   },
   "peerDependencies": {},
@@ -35,7 +36,7 @@
     "@types/jest": "^25.1.4",
     "husky": "^4.2.3",
     "semantic-release": "^17.0.7",
-    "tsdx": "^0.12.3",
+    "tsdx": "^0.13.2",
     "tslib": "^1.11.1",
     "typedoc": "^0.17.6",
     "typescript": "^3.8.3"
@@ -57,7 +58,10 @@
       [
         "@semantic-release/github",
         {
-          "assets": ["package.json", "CHANGELOG.md"],
+          "assets": [
+            "package.json",
+            "CHANGELOG.md"
+          ],
           "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
         }
       ]

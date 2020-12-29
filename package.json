@@ -42,7 +42,7 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "robot3": "^0.2.17"
+    "@xstate/fsm": "^1.5.2"
   },
   "repository": {
     "type": "git",

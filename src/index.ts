@@ -292,7 +292,10 @@ function getNextTargets<Values extends object>(
  */
 export function createWizard<Values extends object = BaseValues>(
   steps: FlowStep<Values>[],
-  initialValues: Values = {} as Values
+  initialValues: Values = {} as Values,
+  actions: {
+    navigate: StateMachine.ActionFunction<Values, WizardEvent<Values>>;
+  }
 ) {
   const normalizedSteps: StepConfig<Values>[] = steps.map(step =>
     typeof step === 'string' ? { name: step } : step
@@ -305,6 +308,7 @@ export function createWizard<Values extends object = BaseValues>(
       StateMachine.Config<Values, WizardEvent<Values>>['states']
     >((result, step, index) => {
       result[step.name] = {
+        entry: ['navigate'],
         on: {
           previous: {
             target: getPreviousTarget(step, index, normalizedSteps),
@@ -330,6 +334,7 @@ export function createWizard<Values extends object = BaseValues>(
   );
   const machine = createMachine(config, {
     actions: {
+      ...actions,
       assignNewValues,
     },
   });

@@ -1,6 +1,6 @@
 # Robo-Wizard
 
-A library for building multi-step forms backed by a state machine using [robot](https://thisrobot.life).
+A library for building multi-step forms backed by a state machine using [@xstate/fsm](https://xstate.js.org/docs/packages/xstate-fsm/).
 
 **Installation**
 

@@ -3,13 +3,11 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build -i src/index.ts --name RoboWizard --format cjs,esm,umd",
-    "build:docs": "typedoc --stripInternal --out _site src",
+    "build:docs": "typedoc --out _site src/index.ts",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
@@ -38,7 +36,7 @@
     "semantic-release": "^17.2.3",
     "tsdx": "^0.14.1",
     "tslib": "^1.11.1",
-    "typedoc": "^0.19.2",
+    "typedoc": "^0.20.31",
     "typescript": "^4.1.3"
   },
   "dependencies": {
@@ -58,10 +56,7 @@
       [
         "@semantic-release/github",
         {
-          "assets": [
-            "package.json",
-            "CHANGELOG.md"
-          ],
+          "assets": ["package.json", "CHANGELOG.md"],
           "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
         }
       ]

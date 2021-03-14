@@ -143,6 +143,54 @@ class RoboWizard<
   }
 }
 
+function getPreviousTarget<Values extends object>(
+  step: StepConfig<Values>,
+  index: number,
+  steps: StepConfig<Values>[]
+): string | undefined {
+  if (typeof step.previous === 'string') {
+    return step.previous;
+  }
+  if (step.previous !== false && step.name !== steps[0].name) {
+    return steps[index - 1].name;
+  }
+  return undefined;
+}
+
+function getNextTarget<Values extends object>(
+  step: StepConfig<Values>,
+  index: number,
+  steps: StepConfig<Values>[]
+) {
+  let stepName: string | undefined = undefined;
+  if (typeof step.next === 'string') {
+    stepName = step.next;
+  } else if (
+    step.next !== false &&
+    step.name !== steps[steps.length - 1].name
+  ) {
+    stepName = steps[index + 1].name;
+  }
+  return {
+    target: stepName,
+    actions: 'assignNewValues',
+  };
+}
+
+function getNextTargets<Values extends object>(
+  nextSteps: StepTransition<Values>[]
+) {
+  return nextSteps.map(step => {
+    const [stepName, guard] = typeof step === 'string' ? [step] : step;
+    const { cond } = typeof guard === 'object' ? guard : { cond: () => true };
+    return {
+      target: typeof stepName === 'string' ? stepName : undefined,
+      cond,
+      actions: 'assignNewValues',
+    };
+  });
+}
+
 /**
  * @typeParam Values Generic type for object of values being gathered through the wizard steps
  * @param steps Configuration of steps for the wizard, see [[FlowStep]]
@@ -259,55 +307,42 @@ export function createWizard<Values extends object = BaseValues>(
       result[step.name] = {
         on: {
           previous: {
-            target:
-              typeof step.previous === 'string'
-                ? step.previous
-                : step.previous !== false &&
-                  step.name !== normalizedSteps[0].name
-                ? normalizedSteps[index - 1].name
-                : undefined,
+            target: getPreviousTarget(step, index, normalizedSteps),
           },
           next: Array.isArray(step.next)
-            ? step.next.map(nextStep => {
-                const [stepName, guard] =
-                  typeof nextStep === 'string' ? [nextStep] : nextStep;
-                const { cond } =
-                  typeof guard === 'object' ? guard : { cond: () => true };
-                return {
-                  target: typeof stepName === 'string' ? stepName : undefined,
-                  cond,
-                  actions: assign((context, event) => ({
-                    ...context,
-                    ...event.values,
-                  })),
-                };
-              })
-            : {
-                target:
-                  typeof step.next === 'string'
-                    ? step.next
-                    : step.next !== false &&
-                      step.name !== normalizedSteps[steps.length - 1].name
-                    ? normalizedSteps[index + 1].name
-                    : undefined,
-                actions: assign((context, event) => ({
-                  ...context,
-                  ...event.values,
-                })),
-              },
+            ? getNextTargets(step.next)
+            : getNextTarget(step, index, normalizedSteps),
         },
       };
       return result;
     }, {}),
   };
-  const machine = createMachine(config);
+  const assignNewValues = assign<Values, WizardEvent<Values>>(
+    (context, event) => {
+      if (event.type === 'next') {
+        return {
+          ...context,
+          ...event.values,
+        };
+      }
+      return context;
+    }
+  );
+  const machine = createMachine(config, {
+    actions: {
+      assignNewValues,
+    },
+  });
   return new RoboWizard<typeof machine, Values>(machine);
 }
 
 /**
  * Event object containing any new values to be updated
  */
-type UpdateEvent<Values> = { values?: Partial<Values> };
+type UpdateEvent<Values> = {
+  type: 'next';
+  values?: Partial<Values>;
+};
 
 /**
  * @typeParam Values Generic type for object of values being gathered through the wizard steps

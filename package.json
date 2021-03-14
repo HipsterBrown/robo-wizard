@@ -47,6 +47,7 @@
     "url": "https://github.com/HipsterBrown/robo-wizard.git"
   },
   "release": {
+    "branches": [{ "name": "main" }],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",

@@ -77,7 +77,7 @@
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
 					<li>
-						<h4>StepMachine<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Machine</span></h4>
+						<h4>StepMachine<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Machine</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">, </span><a href="../modules/_src_index_.html#wizardevent" class="tsd-signature-type">WizardEvent</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
 								<p>Generic type for the configured state machine, based on the <code>Machine</code> type from <a href="https://thisrobot.life">robot</a></p>
@@ -85,7 +85,7 @@
 						</div>
 					</li>
 					<li>
-						<h4>Values = <span class="tsd-signature-type">BaseValues</span></h4>
+						<h4>Values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span> = <span class="tsd-signature-type">BaseValues</span></h4>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
 								<p>Generic type for object of values being gathered through the wizard steps</p>
@@ -139,7 +139,7 @@
 					<div class="tsd-signature tsd-kind-icon">machine<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">StepMachine</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L88">src/index.ts:88</a></li>
+							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L87">src/index.ts:87</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -150,13 +150,13 @@
 					<a name="currentstep" class="tsd-anchor"></a>
 					<h3>current<wbr>Step</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> currentStep<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> currentStep<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L111">src/index.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L108">src/index.ts:108</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -164,7 +164,7 @@
 									<p>Returns the current step of the wizard</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -172,13 +172,13 @@
 					<a name="currentvalues" class="tsd-anchor"></a>
 					<h3>current<wbr>Values</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> currentValues<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">StepMachine[&quot;context&quot;]</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> currentValues<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Values</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L118">src/index.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L115">src/index.ts:115</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -186,7 +186,7 @@
 									<p>Returns the current state of values been gathered through the wizard</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">StepMachine[&quot;context&quot;]</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Values</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -203,7 +203,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L126">src/index.ts:126</a></li>
+									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L123">src/index.ts:123</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -232,7 +232,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L134">src/index.ts:134</a></li>
+									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L131">src/index.ts:131</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -261,7 +261,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L96">src/index.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L95">src/index.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -349,8 +349,20 @@
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="../modules/_src_index_.html#whenfunction" class="tsd-kind-icon">When<wbr>Function</a>
 					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="../modules/_src_index_.html#wizardevent" class="tsd-kind-icon">Wizard<wbr>Event</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="../modules/_src_index_.html#createwizard" class="tsd-kind-icon">create<wbr>Wizard</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="../modules/_src_index_.html#getnexttarget" class="tsd-kind-icon">get<wbr>Next<wbr>Target</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="../modules/_src_index_.html#getnexttargets" class="tsd-kind-icon">get<wbr>Next<wbr>Targets</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="../modules/_src_index_.html#getprevioustarget" class="tsd-kind-icon">get<wbr>Previous<wbr>Target</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="../modules/_src_index_.html#when" class="tsd-kind-icon">when</a>

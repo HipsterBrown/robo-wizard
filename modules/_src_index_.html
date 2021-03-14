@@ -86,12 +86,16 @@
 								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="_src_index_.html#steptransition" class="tsd-kind-icon">Step<wbr>Transition</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported"><a href="_src_index_.html#updateevent" class="tsd-kind-icon">Update<wbr>Event</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="_src_index_.html#whenfunction" class="tsd-kind-icon">When<wbr>Function</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported"><a href="_src_index_.html#wizardevent" class="tsd-kind-icon">Wizard<wbr>Event</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_src_index_.html#createwizard" class="tsd-kind-icon">create<wbr>Wizard</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported"><a href="_src_index_.html#getnexttarget" class="tsd-kind-icon">get<wbr>Next<wbr>Target</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported"><a href="_src_index_.html#getnexttargets" class="tsd-kind-icon">get<wbr>Next<wbr>Targets</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported"><a href="_src_index_.html#getprevioustarget" class="tsd-kind-icon">get<wbr>Previous<wbr>Target</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="_src_index_.html#when" class="tsd-kind-icon">when</a></li>
 							</ul>
 						</section>
@@ -103,24 +107,16 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="basevalues" class="tsd-anchor"></a>
 					<h3>Base<wbr>Values</h3>
-					<div class="tsd-signature tsd-kind-icon">Base<wbr>Values<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+					<div class="tsd-signature tsd-kind-icon">Base<wbr>Values<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L18">src/index.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L4">src/index.ts:4</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Base type describing an object of string keys and <code>any</code> value</p>
 						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-index-signature">
-								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></h5>
-							</li>
-						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
@@ -129,7 +125,7 @@
 					<div class="tsd-signature tsd-kind-icon">Change<wbr>Handler&lt;StepMachine, Values&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>wizard<span class="tsd-signature-symbol">: </span><a href="../classes/_src_index_.robowizard.html" class="tsd-signature-type">RoboWizard</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">StepMachine</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L73">src/index.ts:73</a></li>
+							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L68">src/index.ts:68</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -143,7 +139,7 @@
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
 						<li>
-							<h4>StepMachine<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Machine</span></h4>
+							<h4>StepMachine<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Machine</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">, </span><a href="_src_index_.html#wizardevent" class="tsd-signature-type">WizardEvent</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Generic type for the configured state machine, based on [[Machine]] from <a href="https://thisrobot.life">robot</a></p>
@@ -151,7 +147,7 @@
 							</div>
 						</li>
 						<li>
-							<h4>Values = <span class="tsd-signature-type">BaseValues</span></h4>
+							<h4>Values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span> = <span class="tsd-signature-type">BaseValues</span></h4>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Generic type for object of values being gathered through the wizard steps</p>
@@ -187,7 +183,7 @@
 					<div class="tsd-signature tsd-kind-icon">Flow<wbr>Step&lt;Values&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="_src_index_.html#stepconfig" class="tsd-signature-type">StepConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L64">src/index.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L48">src/index.ts:48</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -195,7 +191,7 @@
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
 						<li>
-							<h4>Values = <span class="tsd-signature-type">BaseValues</span></h4>
+							<h4>Values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span> = <span class="tsd-signature-type">BaseValues</span></h4>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Generic type for object of values being gathered through the wizard steps</p>
@@ -211,7 +207,7 @@
 					<div class="tsd-signature tsd-kind-icon">Step<wbr>Config&lt;Values&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>next<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="_src_index_.html#steptransition" class="tsd-signature-type">StepTransition</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>previous<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="_src_index_.html#steptransition" class="tsd-signature-type">StepTransition</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L42">src/index.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L26">src/index.ts:26</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -219,7 +215,7 @@
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
 						<li>
-							<h4>Values = <span class="tsd-signature-type">BaseValues</span></h4>
+							<h4>Values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span> = <span class="tsd-signature-type">BaseValues</span></h4>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Generic type for object of values being gathered through the wizard steps</p>
@@ -264,10 +260,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
 					<a name="steptransition" class="tsd-anchor"></a>
 					<h3>Step<wbr>Transition</h3>
-					<div class="tsd-signature tsd-kind-icon">Step<wbr>Transition&lt;Values&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Guard</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reducer</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Action</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">Step<wbr>Transition&lt;Values&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>cond<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#whenfunction" class="tsd-signature-type">WhenFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L35">src/index.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L19">src/index.ts:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -275,7 +271,7 @@
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
 						<li>
-							<h4>Values = <span class="tsd-signature-type">BaseValues</span></h4>
+							<h4>Values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span> = <span class="tsd-signature-type">BaseValues</span></h4>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Generic type for object of values being gathered through the wizard steps</p>
@@ -293,10 +289,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
 					<a name="updateevent" class="tsd-anchor"></a>
 					<h3>Update<wbr>Event</h3>
-					<div class="tsd-signature tsd-kind-icon">Update<wbr>Event&lt;Values&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol"> }</span></div>
+					<div class="tsd-signature tsd-kind-icon">Update<wbr>Event&lt;Values&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"next"</span><span class="tsd-signature-symbol">; </span>values<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L325">src/index.ts:325</a></li>
+							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L342">src/index.ts:342</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -314,7 +310,10 @@
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter">
-								<h5>values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Values</span></h5>
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"next"</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> values<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 						</ul>
 					</div>
@@ -325,7 +324,7 @@
 					<div class="tsd-signature tsd-kind-icon">When<wbr>Function&lt;Values&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Values</span>, event<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#updateevent" class="tsd-signature-type">UpdateEvent</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L345">src/index.ts:345</a></li>
+							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L352">src/index.ts:352</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -341,7 +340,7 @@
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
 						<li>
-							<h4>Values = <span class="tsd-signature-type">BaseValues</span></h4>
+							<h4>Values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span> = <span class="tsd-signature-type">BaseValues</span></h4>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Generic type for object of values being gathered through the wizard steps</p>
@@ -374,6 +373,22 @@
 						</ul>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+					<a name="wizardevent" class="tsd-anchor"></a>
+					<h3>Wizard<wbr>Event</h3>
+					<div class="tsd-signature tsd-kind-icon">Wizard<wbr>Event&lt;Values&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"next"</span><span class="tsd-signature-symbol">; </span>values<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"previous"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L52">src/index.ts:52</a></li>
+						</ul>
+					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>Values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
@@ -381,13 +396,13 @@
 					<a name="createwizard" class="tsd-anchor"></a>
 					<h3>create<wbr>Wizard</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">create<wbr>Wizard&lt;Values&gt;<span class="tsd-signature-symbol">(</span>steps<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#flowstep" class="tsd-signature-type">FlowStep</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span>, initialValues<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_src_index_.robowizard.html" class="tsd-signature-type">RoboWizard</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Machine</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Wizard&lt;Values&gt;<span class="tsd-signature-symbol">(</span>steps<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#flowstep" class="tsd-signature-type">FlowStep</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span>, initialValues<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_src_index_.robowizard.html" class="tsd-signature-type">RoboWizard</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Machine</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">, </span><a href="_src_index_.html#wizardevent" class="tsd-signature-type">WizardEvent</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-symbol">{ </span>context<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L248">src/index.ts:248</a></li>
+									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L293">src/index.ts:293</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -395,7 +410,7 @@
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>Values = <span class="tsd-signature-type">BaseValues</span></h4>
+									<h4>Values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span> = <span class="tsd-signature-type">BaseValues</span></h4>
 									<div class="tsd-comment tsd-typography">
 										<p>Generic type for object of values being gathered through the wizard steps</p>
 									</div>
@@ -498,7 +513,114 @@ wizard.goToNextStep();
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../classes/_src_index_.robowizard.html" class="tsd-signature-type">RoboWizard</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Machine</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../classes/_src_index_.robowizard.html" class="tsd-signature-type">RoboWizard</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Machine</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">, </span><a href="_src_index_.html#wizardevent" class="tsd-signature-type">WizardEvent</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-symbol">{ </span>context<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+					<a name="getnexttarget" class="tsd-anchor"></a>
+					<h3>get<wbr>Next<wbr>Target</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Next<wbr>Target&lt;Values&gt;<span class="tsd-signature-symbol">(</span>step<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#stepconfig" class="tsd-signature-type">StepConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, steps<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#stepconfig" class="tsd-signature-type">StepConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>actions<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L160">src/index.ts:160</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>Values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>step: <a href="_src_index_.html#stepconfig" class="tsd-signature-type">StepConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>index: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>steps: <a href="_src_index_.html#stepconfig" class="tsd-signature-type">StepConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>actions<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>actions<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+					<a name="getnexttargets" class="tsd-anchor"></a>
+					<h3>get<wbr>Next<wbr>Targets</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Next<wbr>Targets&lt;Values&gt;<span class="tsd-signature-symbol">(</span>nextSteps<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#steptransition" class="tsd-signature-type">StepTransition</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>actions<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>cond<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#whenfunction" class="tsd-signature-type">WhenFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L180">src/index.ts:180</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>Values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>nextSteps: <a href="_src_index_.html#steptransition" class="tsd-signature-type">StepTransition</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>actions<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>cond<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#whenfunction" class="tsd-signature-type">WhenFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+					<a name="getprevioustarget" class="tsd-anchor"></a>
+					<h3>get<wbr>Previous<wbr>Target</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Previous<wbr>Target&lt;Values&gt;<span class="tsd-signature-symbol">(</span>step<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#stepconfig" class="tsd-signature-type">StepConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, steps<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#stepconfig" class="tsd-signature-type">StepConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L146">src/index.ts:146</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>Values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>step: <a href="_src_index_.html#stepconfig" class="tsd-signature-type">StepConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>index: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>steps: <a href="_src_index_.html#stepconfig" class="tsd-signature-type">StepConfig</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -506,13 +628,13 @@ wizard.goToNextStep();
 					<a name="when" class="tsd-anchor"></a>
 					<h3>when</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">when&lt;Values&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#whenfunction" class="tsd-signature-type">WhenFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Guard</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">when&lt;Values&gt;<span class="tsd-signature-symbol">(</span>cond<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#whenfunction" class="tsd-signature-type">WhenFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>cond<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#whenfunction" class="tsd-signature-type">WhenFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/967c902/src/index.ts#L355">src/index.ts:355</a></li>
+									<li>Defined in <a href="https://github.com/HipsterBrown/robo-wizard/blob/1c26e87/src/index.ts#L362">src/index.ts:362</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -520,7 +642,7 @@ wizard.goToNextStep();
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>Values = <span class="tsd-signature-type">BaseValues</span></h4>
+									<h4>Values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span> = <span class="tsd-signature-type">BaseValues</span></h4>
 									<div class="tsd-comment tsd-typography">
 										<p>Generic type for object of values being gathered through the wizard steps</p>
 									</div>
@@ -529,14 +651,15 @@ wizard.goToNextStep();
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>fn: <a href="_src_index_.html#whenfunction" class="tsd-signature-type">WhenFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Guard function to be called to test if the step should transition, see <a href="_src_index_.html#whenfunction">WhenFunction</a>
-										See <a href="_src_index_.html#createwizard">createWizard</a> for example usage</p>
-									</div>
+									<h5>cond: <a href="_src_index_.html#whenfunction" class="tsd-signature-type">WhenFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Guard</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>cond<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#whenfunction" class="tsd-signature-type">WhenFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>cond<span class="tsd-signature-symbol">: </span><a href="_src_index_.html#whenfunction" class="tsd-signature-type">WhenFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Values</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</section>
@@ -579,8 +702,20 @@ wizard.goToNextStep();
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_src_index_.html#whenfunction" class="tsd-kind-icon">When<wbr>Function</a>
 					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="_src_index_.html#wizardevent" class="tsd-kind-icon">Wizard<wbr>Event</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_src_index_.html#createwizard" class="tsd-kind-icon">create<wbr>Wizard</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="_src_index_.html#getnexttarget" class="tsd-kind-icon">get<wbr>Next<wbr>Target</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="_src_index_.html#getnexttargets" class="tsd-kind-icon">get<wbr>Next<wbr>Targets</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="_src_index_.html#getprevioustarget" class="tsd-kind-icon">get<wbr>Previous<wbr>Target</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_src_index_.html#when" class="tsd-kind-icon">when</a>

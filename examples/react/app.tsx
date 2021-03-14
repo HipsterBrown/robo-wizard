@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { createWizard, FlowStep, BaseValues } from '../../src/index';
 
-function useWizard<Values = BaseValues>(
+function useWizard<Values extends object = BaseValues>(
   steps: FlowStep<Values>[],
   initialValues: Values = {} as Values
 ) {

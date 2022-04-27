@@ -8,10 +8,10 @@
   },
   "author": "HipsterBrown",
   "license": "Apache-2.0",
-  "devDependencies": {
-    "parcel-bundler": "1.12.3"
-  },
   "dependencies": {
     "alpinejs": "^2.3.5"
+  },
+  "devDependencies": {
+    "parcel": "^2.5.0"
   }
 }

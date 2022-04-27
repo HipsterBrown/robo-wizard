@@ -7,7 +7,7 @@ function useWizard<Values extends object = BaseValues>(
   initialValues: Values = {} as Values
 ) {
   const [_, refreshState] = React.useState<boolean>(false);
-  const [currentWizard, setWizard] = React.useState(() => {
+  const [currentWizard] = React.useState(() => {
     const wizard = createWizard<Values>(steps, initialValues);
     wizard.start(() => refreshState(s => !s));
     return wizard;
@@ -35,7 +35,7 @@ const App: React.FC = () => {
 
   return (
     <div className="px-5">
-      <h1 className="text-2xl font-bold">Robo Wizard</h1>
+      <h1 className="text-2xl font-bold">Robo Wizard w/ React</h1>
 
       <p className="font-semibold mb-8 underline uppercase">
         {wizard.currentStep} step

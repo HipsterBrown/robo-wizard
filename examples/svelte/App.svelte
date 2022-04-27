@@ -17,7 +17,7 @@
 </script>
 
 <div class="px-8">
-  <h1 class="text-2xl font-bold">Robo Wizard</h1>
+  <h1 class="text-2xl font-bold">Robo Wizard w/ Svelte</h1>
 
   <p class="font-semibold mb-8 underline uppercase">
     {wizard.currentStep} step
@@ -25,11 +25,7 @@
 
   <form on:submit|preventDefault={onSubmit}>
     {#if wizard.currentStep === 'first'}
-      <label
-        for="firstName"
-        id="firstName-label"
-        class="block mb-2"
-        >
+      <label for="firstName" id="firstName-label" class="block mb-2">
         First Name:
       </label>
       <input
@@ -43,11 +39,7 @@
     {/if}
 
     {#if wizard.currentStep === 'second'}
-      <label
-        for="lastName"
-        id="lastName-label"
-        class="block mb-2"
-      >
+      <label for="lastName" id="lastName-label" class="block mb-2">
         Last Name:
       </label>
       <input
@@ -69,9 +61,9 @@
     <div class="flex w-32 mt-8 justify-between">
       <button
         type="button"
-        on:click="{() => wizard.goToPreviousStep()}"
+        on:click={() => wizard.goToPreviousStep()}
         class="p-3 mr-4"
-        >
+      >
         Previous
       </button>
       <button type="submit" class="py-3 px-8 border-2 border-gray-900">

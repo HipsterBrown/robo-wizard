@@ -4,5 +4,6 @@ node_modules
 dist
 examples/**/package-lock.json
 examples/**/.cache
+examples/**/.parcel-cache
 docs/
 _site/

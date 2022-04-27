@@ -2,15 +2,14 @@
   "name": "robo-wizard-svelte-example",
   "version": "0.0.0-example",
   "description": "Example usage of robo-wizard with svelte",
-  "main": "index.js",
   "scripts": {
     "start": "parcel index.html --host 0.0.0.0"
   },
   "author": "HipsterBrown",
   "license": "Apache-2.0",
   "devDependencies": {
-    "parcel-bundler": "1.12.3",
-    "parcel-plugin-svelte": "^4.0.6",
+    "parcel": "^2.5.0",
+    "parcel-transformer-svelte": "^1.2.3",
     "svelte": "^3.22.2"
   }
 }

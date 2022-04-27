@@ -2,7 +2,6 @@
   "name": "robo-wizard-react-example",
   "version": "0.0.0-example",
   "description": "An example usage of robo-wizard with React",
-  "main": "app.ts",
   "scripts": {
     "start": "parcel index.html --host 0.0.0.0"
   },
@@ -13,6 +12,6 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "parcel-bundler": "1.12.3"
+    "parcel": "^2.5.0"
   }
 }

@@ -9,6 +9,6 @@
   "author": "HipsterBrown",
   "license": "Apache-2.0",
   "devDependencies": {
-    "parcel-bundler": "1.12.3"
+    "parcel": "^2.5.0"
   }
 }

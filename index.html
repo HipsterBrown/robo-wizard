@@ -1,196 +1,62 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>robo-wizard</title>
-	<meta name="description" content="Documentation for robo-wizard">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">robo-wizard</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>robo-wizard</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#robo-wizard" id="robo-wizard" style="color: inherit; text-decoration: none;">
-					<h1>Robo-Wizard</h1>
-				</a>
-				<p>A library for building multi-step forms backed by a state machine using <a href="https://xstate.js.org/docs/packages/xstate-fsm/">@xstate/fsm</a>.</p>
-				<p><strong>Installation</strong></p>
-				<p>This package is written in TypeScript so type definitions are included by default:</p>
-				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> </span><span style="color: #001080">robo</span><span style="color: #000000">-</span><span style="color: #001080">wizard</span>
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>robo-wizard</title><meta name="description" content="Documentation for robo-wizard"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">robo-wizard</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>robo-wizard </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#robo-wizard" id="robo-wizard" style="color: inherit; text-decoration: none;">
+  <h1>Robo-Wizard</h1>
+</a>
+<p>A library for building multi-step forms backed by a state machine using <a href="https://xstate.js.org/docs/packages/xstate-fsm/">@xstate/fsm</a>.</p>
+<p><strong>Installation</strong></p>
+<p>This package is written in TypeScript so type definitions are included by default:</p>
+<pre><code><span class="hl-3">npm</span><span class="hl-0"> </span><span class="hl-3">install</span><span class="hl-0"> </span><span class="hl-3">robo</span><span class="hl-0">-</span><span class="hl-3">wizard</span>
 </code></pre>
-				<pre><code><span style="color: #001080">yarn</span><span style="color: #000000"> </span><span style="color: #001080">add</span><span style="color: #000000"> </span><span style="color: #001080">robo</span><span style="color: #000000">-</span><span style="color: #001080">wizard</span>
+<pre><code><span class="hl-3">pnpm</span><span class="hl-0"> </span><span class="hl-3">install</span><span class="hl-0"> </span><span class="hl-3">robo</span><span class="hl-0">-</span><span class="hl-3">wizard</span>
 </code></pre>
-				<p><strong>Basic usage:</strong></p>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">createWizard</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;robo-wizard&#039;</span><span style="color: #000000">;</span>
-
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wizard</span><span style="color: #000000"> = </span><span style="color: #795E26">createWizard</span><span style="color: #000000">([</span><span style="color: #A31515">&#039;first&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;second&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;third&#039;</span><span style="color: #000000">]);</span>
-<span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #795E26">start</span><span style="color: #000000">(</span><span style="color: #001080">updatedWizard</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> { </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Updated!&#039;</span><span style="color: #000000">, </span><span style="color: #001080">updatedWizard</span><span style="color: #000000">.</span><span style="color: #001080">currentStep</span><span style="color: #000000">) });</span>
-
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #001080">currentStep</span><span style="color: #000000">); </span><span style="color: #008000">// first</span>
-
-<span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #795E26">goToNextStep</span><span style="color: #000000">();</span>
-
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #001080">currentStep</span><span style="color: #000000">); </span><span style="color: #008000">// second</span>
-
-<span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #795E26">goToNextStep</span><span style="color: #000000">();</span>
-
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #001080">currentStep</span><span style="color: #000000">); </span><span style="color: #008000">// third</span>
-
-<span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #795E26">goToPreviousStep</span><span style="color: #000000">();</span>
-
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #001080">currentStep</span><span style="color: #000000">); </span><span style="color: #008000">// second</span>
+<pre><code><span class="hl-3">yarn</span><span class="hl-0"> </span><span class="hl-3">add</span><span class="hl-0"> </span><span class="hl-3">robo</span><span class="hl-0">-</span><span class="hl-3">wizard</span>
 </code></pre>
-				<p><strong>Gathering values:</strong></p>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">createWizard</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;robo-wizard&#039;</span><span style="color: #000000">;</span>
-
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">wizard</span><span style="color: #000000"> = </span><span style="color: #795E26">createWizard</span><span style="color: #000000">([</span><span style="color: #A31515">&#039;first&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;second&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;third&#039;</span><span style="color: #000000">], { </span><span style="color: #001080">firstName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000">, </span><span style="color: #001080">lastName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000"> });</span>
-<span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #795E26">start</span><span style="color: #000000">(</span><span style="color: #001080">updatedWizard</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> { </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Updated!&#039;</span><span style="color: #000000">, </span><span style="color: #001080">updatedWizard</span><span style="color: #000000">.</span><span style="color: #001080">currentStep</span><span style="color: #000000">), </span><span style="color: #001080">updatedWizard</span><span style="color: #000000">.</span><span style="color: #001080">currentValues</span><span style="color: #000000"> });</span>
-
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #001080">currentValues</span><span style="color: #000000">); </span><span style="color: #008000">// { firstName: &#039;&#039;, lastName: &#039;&#039; }</span>
-
-<span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #795E26">goToNextStep</span><span style="color: #000000">({ </span><span style="color: #001080">values:</span><span style="color: #000000"> { </span><span style="color: #001080">firstName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Jane&#039;</span><span style="color: #000000"> } });</span>
-
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #001080">currentValues</span><span style="color: #000000">); </span><span style="color: #008000">// { firstName: &#039;Jane&#039;, lastName: &#039;&#039; }</span>
-
-<span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #795E26">goToNextStep</span><span style="color: #000000">({ </span><span style="color: #001080">values:</span><span style="color: #000000"> { </span><span style="color: #001080">lastName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Doe&#039;</span><span style="color: #000000"> } });</span>
-
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #001080">currentValues</span><span style="color: #000000">); </span><span style="color: #008000">// { firstName: &#039;Jane&#039;, lastName: &#039;Doe&#039; }</span>
-
-<span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #795E26">goToPreviousStep</span><span style="color: #000000">({ </span><span style="color: #001080">values:</span><span style="color: #000000"> { </span><span style="color: #001080">firstName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000">, </span><span style="color: #001080">lastName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000"> } });</span>
-
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">wizard</span><span style="color: #000000">.</span><span style="color: #001080">currentValues</span><span style="color: #000000">); </span><span style="color: #008000">// { firstName: &#039;&#039;, lastName: &#039;&#039; }</span>
+<p><strong>Basic usage:</strong></p>
+<pre><code class="language-typescript"><span class="hl-6">import</span><span class="hl-0"> { </span><span class="hl-3">createWizard</span><span class="hl-0"> } </span><span class="hl-6">from</span><span class="hl-0"> </span><span class="hl-1">&#39;robo-wizard&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-7">wizard</span><span class="hl-0"> = </span><span class="hl-2">createWizard</span><span class="hl-0">([</span><span class="hl-1">&#39;first&#39;</span><span class="hl-0">, </span><span class="hl-1">&#39;second&#39;</span><span class="hl-0">, </span><span class="hl-1">&#39;third&#39;</span><span class="hl-0">]);</span><br/><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-2">start</span><span class="hl-0">(</span><span class="hl-3">updatedWizard</span><span class="hl-0"> </span><span class="hl-4">=&gt;</span><span class="hl-0"> { </span><span class="hl-3">console</span><span class="hl-0">.</span><span class="hl-2">log</span><span class="hl-0">(</span><span class="hl-1">&#39;Updated!&#39;</span><span class="hl-0">, </span><span class="hl-3">updatedWizard</span><span class="hl-0">.</span><span class="hl-3">currentStep</span><span class="hl-0">) });</span><br/><br/><span class="hl-3">console</span><span class="hl-0">.</span><span class="hl-2">log</span><span class="hl-0">(</span><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-3">currentStep</span><span class="hl-0">); </span><span class="hl-5">// first</span><br/><br/><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-2">goToNextStep</span><span class="hl-0">();</span><br/><br/><span class="hl-3">console</span><span class="hl-0">.</span><span class="hl-2">log</span><span class="hl-0">(</span><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-3">currentStep</span><span class="hl-0">); </span><span class="hl-5">// second</span><br/><br/><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-2">goToNextStep</span><span class="hl-0">();</span><br/><br/><span class="hl-3">console</span><span class="hl-0">.</span><span class="hl-2">log</span><span class="hl-0">(</span><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-3">currentStep</span><span class="hl-0">); </span><span class="hl-5">// third</span><br/><br/><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-2">goToPreviousStep</span><span class="hl-0">();</span><br/><br/><span class="hl-3">console</span><span class="hl-0">.</span><span class="hl-2">log</span><span class="hl-0">(</span><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-3">currentStep</span><span class="hl-0">); </span><span class="hl-5">// second</span>
 </code></pre>
-				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
-					<h2>Examples</h2>
-				</a>
-				<p>Check out the <a href="./examples/">examples</a> directory to see a sample of usage with HTML and a few framework integrations.</p>
-				<a href="#work-in-progress-roadmap" id="work-in-progress-roadmap" style="color: inherit; text-decoration: none;">
-					<h2>Work In Progress Roadmap</h2>
-				</a>
-				<ul>
-					<li><input disabled="" type="checkbox"> <code>createForm</code> state machine generator to control form state for a step in the wizard</li>
-					<li><input disabled="" type="checkbox"> example integration of routed wizard steps, i.e. using <code>react-router</code> or <code>history</code> packages</li>
-					<li><input disabled="" type="checkbox"> add history stack to internal state machine to lookup the previous step when using custom progression</li>
-				</ul>
-				<a href="#local-development" id="local-development" style="color: inherit; text-decoration: none;">
-					<h2>Local Development</h2>
-				</a>
-				<p>This project was bootstrapped with <a href="https://github.com/jaredpalmer/tsdx">TSDX</a>.</p>
-				<p>Below is a list of commands you will probably find useful.</p>
-				<a href="#npm-start-or-yarn-start" id="npm-start-or-yarn-start" style="color: inherit; text-decoration: none;">
-					<h3><code>npm start</code> or <code>yarn start</code></h3>
-				</a>
-				<p>Runs the project in development/watch mode. Your project will be rebuilt upon changes. TSDX has a special logger for you convenience. Error messages are pretty printed and formatted for compatibility VS Code&#39;s Problems tab.</p>
-				<img src="https://user-images.githubusercontent.com/4060187/52168303-574d3a00-26f6-11e9-9f3b-71dbec9ebfcb.gif" width="600" />
-				<p>Your library will be rebuilt if you make edits.</p>
-				<a href="#npm-run-build-or-yarn-build" id="npm-run-build-or-yarn-build" style="color: inherit; text-decoration: none;">
-					<h3><code>npm run build</code> or <code>yarn build</code></h3>
-				</a>
-				<p>Bundles the package to the <code>dist</code> folder.
-				The package is optimized and bundled with Rollup into multiple formats (CommonJS, UMD, and ES Module).</p>
-				<img src="https://user-images.githubusercontent.com/4060187/52168322-a98e5b00-26f6-11e9-8cf6-222d716b75ef.gif" width="600" />
-				<a href="#npm-test-or-yarn-test" id="npm-test-or-yarn-test" style="color: inherit; text-decoration: none;">
-					<h3><code>npm test</code> or <code>yarn test</code></h3>
-				</a>
-				<p>Runs the test watcher (Jest) in an interactive mode.
-				By default, runs tests related to files changed since the last commit.</p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Exports</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-type-alias">
-						<a href="modules.html#basevalues" class="tsd-kind-icon">Base<wbr>Values</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="modules.html#flowstep" class="tsd-kind-icon">Flow<wbr>Step</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="modules.html#stepconfig" class="tsd-kind-icon">Step<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="modules.html#steptransition" class="tsd-kind-icon">Step<wbr>Transition</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="modules.html#whenfunction" class="tsd-kind-icon">When<wbr>Function</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="modules.html#createwizard" class="tsd-kind-icon">create<wbr>Wizard</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="modules.html#when" class="tsd-kind-icon">when</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+<p><strong>Gathering values:</strong></p>
+<pre><code class="language-typescript"><span class="hl-6">import</span><span class="hl-0"> { </span><span class="hl-3">createWizard</span><span class="hl-0"> } </span><span class="hl-6">from</span><span class="hl-0"> </span><span class="hl-1">&#39;robo-wizard&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-7">wizard</span><span class="hl-0"> = </span><span class="hl-2">createWizard</span><span class="hl-0">([</span><span class="hl-1">&#39;first&#39;</span><span class="hl-0">, </span><span class="hl-1">&#39;second&#39;</span><span class="hl-0">, </span><span class="hl-1">&#39;third&#39;</span><span class="hl-0">], { </span><span class="hl-3">firstName:</span><span class="hl-0"> </span><span class="hl-1">&#39;&#39;</span><span class="hl-0">, </span><span class="hl-3">lastName:</span><span class="hl-0"> </span><span class="hl-1">&#39;&#39;</span><span class="hl-0"> });</span><br/><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-2">start</span><span class="hl-0">(</span><span class="hl-3">updatedWizard</span><span class="hl-0"> </span><span class="hl-4">=&gt;</span><span class="hl-0"> { </span><span class="hl-3">console</span><span class="hl-0">.</span><span class="hl-2">log</span><span class="hl-0">(</span><span class="hl-1">&#39;Updated!&#39;</span><span class="hl-0">, </span><span class="hl-3">updatedWizard</span><span class="hl-0">.</span><span class="hl-3">currentStep</span><span class="hl-0">), </span><span class="hl-3">updatedWizard</span><span class="hl-0">.</span><span class="hl-3">currentValues</span><span class="hl-0"> });</span><br/><br/><span class="hl-3">console</span><span class="hl-0">.</span><span class="hl-2">log</span><span class="hl-0">(</span><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-3">currentValues</span><span class="hl-0">); </span><span class="hl-5">// { firstName: &#39;&#39;, lastName: &#39;&#39; }</span><br/><br/><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-2">goToNextStep</span><span class="hl-0">({ </span><span class="hl-3">values:</span><span class="hl-0"> { </span><span class="hl-3">firstName:</span><span class="hl-0"> </span><span class="hl-1">&#39;Jane&#39;</span><span class="hl-0"> } });</span><br/><br/><span class="hl-3">console</span><span class="hl-0">.</span><span class="hl-2">log</span><span class="hl-0">(</span><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-3">currentValues</span><span class="hl-0">); </span><span class="hl-5">// { firstName: &#39;Jane&#39;, lastName: &#39;&#39; }</span><br/><br/><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-2">goToNextStep</span><span class="hl-0">({ </span><span class="hl-3">values:</span><span class="hl-0"> { </span><span class="hl-3">lastName:</span><span class="hl-0"> </span><span class="hl-1">&#39;Doe&#39;</span><span class="hl-0"> } });</span><br/><br/><span class="hl-3">console</span><span class="hl-0">.</span><span class="hl-2">log</span><span class="hl-0">(</span><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-3">currentValues</span><span class="hl-0">); </span><span class="hl-5">// { firstName: &#39;Jane&#39;, lastName: &#39;Doe&#39; }</span><br/><br/><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-2">goToPreviousStep</span><span class="hl-0">({ </span><span class="hl-3">values:</span><span class="hl-0"> { </span><span class="hl-3">firstName:</span><span class="hl-0"> </span><span class="hl-1">&#39;&#39;</span><span class="hl-0">, </span><span class="hl-3">lastName:</span><span class="hl-0"> </span><span class="hl-1">&#39;&#39;</span><span class="hl-0"> } });</span><br/><br/><span class="hl-3">console</span><span class="hl-0">.</span><span class="hl-2">log</span><span class="hl-0">(</span><span class="hl-3">wizard</span><span class="hl-0">.</span><span class="hl-3">currentValues</span><span class="hl-0">); </span><span class="hl-5">// { firstName: &#39;&#39;, lastName: &#39;&#39; }</span>
+</code></pre>
+
+<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+  <h2>Examples</h2>
+</a>
+<p>Check out the <a href="./examples/">examples</a> directory to see a sample of usage with HTML and a few framework integrations.</p>
+
+<a href="#work-in-progress-roadmap" id="work-in-progress-roadmap" style="color: inherit; text-decoration: none;">
+  <h2>Work In Progress Roadmap</h2>
+</a>
+<ul>
+<li><input disabled="" type="checkbox"> <code>createForm</code> state machine generator to control form state for a step in the wizard</li>
+<li><input disabled="" type="checkbox"> example integration of routed wizard steps, i.e. using <code>react-router</code> or <code>history</code> packages</li>
+<li><input disabled="" type="checkbox"> add history stack to internal state machine to lookup the previous step when using custom progression</li>
+</ul>
+
+<a href="#local-development" id="local-development" style="color: inherit; text-decoration: none;">
+  <h2>Local Development</h2>
+</a>
+<p>This project was bootstrapped with <a href="https://github.com/jaredpalmer/tsdx">TSDX</a> and uses <a href="https://pnpm.io/">pnpm</a> for package management.</p>
+<p>Below is a list of commands you will probably find useful.</p>
+
+<a href="#pnpm-start" id="pnpm-start" style="color: inherit; text-decoration: none;">
+  <h3><code>pnpm start</code></h3>
+</a>
+<p>Runs the project in development/watch mode. Your project will be rebuilt upon changes. TSDX has a special logger for you convenience. Error messages are pretty printed and formatted for compatibility VS Code&#39;s Problems tab.</p>
+<img src="https://user-images.githubusercontent.com/4060187/52168303-574d3a00-26f6-11e9-9f3b-71dbec9ebfcb.gif" width="600" />
+
+<p>Your library will be rebuilt if you make edits.</p>
+
+<a href="#pnpm-run-build" id="pnpm-run-build" style="color: inherit; text-decoration: none;">
+  <h3><code>pnpm run build</code></h3>
+</a>
+<p>Bundles the package to the <code>dist</code> folder.
+The package is optimized and bundled with Rollup into multiple formats (CommonJS, UMD, and ES Module).</p>
+<img src="https://user-images.githubusercontent.com/4060187/52168322-a98e5b00-26f6-11e9-8cf6-222d716b75ef.gif" width="600" />
+
+
+<a href="#pnpm-test" id="pnpm-test" style="color: inherit; text-decoration: none;">
+  <h3><code>pnpm test</code></h3>
+</a>
+<p>Runs the test watcher (Jest) in an interactive mode.
+By default, runs tests related to files changed since the last commit.</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-type-alias"><a href="modules.html#BaseValues" class="tsd-kind-icon">Base<wbr/>Values</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#FlowStep" class="tsd-kind-icon">Flow<wbr/>Step</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#StepConfig" class="tsd-kind-icon">Step<wbr/>Config</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#StepTransition" class="tsd-kind-icon">Step<wbr/>Transition</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#WhenFunction" class="tsd-kind-icon">When<wbr/>Function</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#createWizard" class="tsd-kind-icon">create<wbr/>Wizard</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#when" class="tsd-kind-icon">when</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>

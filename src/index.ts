@@ -69,12 +69,12 @@ export type FlowStep<Values extends object = BaseValues> =
 
 type WizardEvent<Values extends object> =
   | {
-    type: 'next';
-    values?: Partial<Values>;
-  }
+      type: 'next';
+      values?: Partial<Values>;
+    }
   | {
-    type: 'previous';
-  };
+      type: 'previous';
+    };
 
 /**
  * @typeParam StepMachine Generic type for the configured state machine, based on [[Machine]] from [robot](https://thisrobot.life)
@@ -87,7 +87,7 @@ type ChangeHandler<
   // eslint-disable-next-line no-use-before-define, @typescript-eslint/no-explicit-any
   StepMachine extends StateMachine.Machine<Values, WizardEvent<Values>, any>,
   Values extends object = BaseValues
-  > = (wizard: RoboWizard<StepMachine, Values>) => void; // eslint-disable-line no-use-before-define
+> = (wizard: RoboWizard<StepMachine, Values>) => void; // eslint-disable-line no-use-before-define
 
 /**
  * @typeParam StepMachine Generic type for the configured state machine, based on the `Machine` type from [robot](https://thisrobot.life)
@@ -99,7 +99,7 @@ class RoboWizard<
   // eslint-disable-next-line no-use-before-define, @typescript-eslint/no-explicit-any
   StepMachine extends StateMachine.Machine<Values, WizardEvent<Values>, any>,
   Values extends object = BaseValues
-  > {
+> {
   /** @ignore */
   private _service?: StateMachine.Service<Values, WizardEvent<Values>, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
@@ -216,11 +216,13 @@ function getNextTargets<Values extends object>(
   });
 }
 
-type MaybeTarget = { target: string | undefined }
-type HasTarget = Required<{ target: string }> | Array<Required<{ target: string }>>
+type MaybeTarget = { target: string | undefined };
+type HasTarget =
+  | Required<{ target: string }>
+  | Array<Required<{ target: string }>>;
 
 function hasTarget(config: MaybeTarget | MaybeTarget[]): config is HasTarget {
-  if (Array.isArray(config)) return config.every(o => !!o.target)
+  if (Array.isArray(config)) return config.every((o) => !!o.target);
   return !!config.target;
 }
 
@@ -346,7 +348,7 @@ export function createWizard<Values extends object = BaseValues>(
       result[step.name] = {
         on: {
           ...(previousTarget ? { previous: { target: previousTarget } } : {}),
-          ...(hasTarget(nextTarget) ? { next: nextTarget } : {})
+          ...(hasTarget(nextTarget) ? { next: nextTarget } : {}),
         },
       };
       return result;

@@ -3,7 +3,9 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build -i src/index.ts --name RoboWizard --format cjs,esm,umd",
@@ -13,7 +15,6 @@
     "prepare": "tsdx build",
     "semantic-release": "semantic-release"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -36,7 +37,7 @@
     "semantic-release": "^17.2.3",
     "tsdx": "^0.14.1",
     "tslib": "^1.11.1",
-    "typedoc": "^0.20.31",
+    "typedoc": "^0.22.15",
     "typescript": "^4.1.3"
   },
   "dependencies": {
@@ -47,7 +48,11 @@
     "url": "https://github.com/HipsterBrown/robo-wizard.git"
   },
   "release": {
-    "branches": [{ "name": "main" }],
+    "branches": [
+      {
+        "name": "main"
+      }
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
@@ -57,10 +62,19 @@
       [
         "@semantic-release/github",
         {
-          "assets": ["package.json", "CHANGELOG.md"],
+          "assets": [
+            "package.json",
+            "CHANGELOG.md"
+          ],
           "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
         }
       ]
     ]
+  },
+  "pnpm": {
+    "overrides": {
+      "node-notifier@<8.0.1": ">=8.0.1",
+      "marked@<4.0.10": ">=4.0.10"
+    }
   }
 }

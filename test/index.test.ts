@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { createWizard, when, WhenFunction } from '../src';
 
 describe('createWizard', () => {
@@ -6,8 +7,8 @@ describe('createWizard', () => {
 
     it('progresses forward linearly', () => {
       let currentStep;
-      let nextStep = (_event?: { values: object }) => {};
-      let previousStep = () => {};
+      let nextStep = (_event?: { values: object }) => { };
+      let previousStep = () => { };
       const wizard = createWizard(steps);
 
       wizard.start(wiz => {
@@ -47,8 +48,8 @@ describe('createWizard', () => {
 
     it('updates values during progression', () => {
       let currentValues;
-      let nextStep = (_event: { values?: object }) => {};
-      let previousStep = () => {};
+      let nextStep = (_event: { values?: object }) => { };
+      let previousStep = () => { };
       const wizard = createWizard(steps);
 
       wizard.start(wiz => {
@@ -84,7 +85,7 @@ describe('createWizard', () => {
 
     it('progresses forward linearly', () => {
       const wizard = createWizard(steps);
-      wizard.start(() => {});
+      wizard.start(() => { });
 
       expect(wizard.currentStep).toBe('first');
 
@@ -125,7 +126,7 @@ describe('createWizard', () => {
 
     it('progresses forward linearly', () => {
       const wizard = createWizard(steps);
-      wizard.start(() => {});
+      wizard.start(() => { });
 
       expect(wizard.currentStep).toBe('first');
 
@@ -162,7 +163,7 @@ describe('createWizard', () => {
     it('progresses forward conditionally', () => {
       const wizard = createWizard(steps, initialValues);
 
-      wizard.start(() => {});
+      wizard.start(() => { });
 
       expect(wizard.currentValues).toMatchObject(initialValues);
 

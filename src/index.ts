@@ -4,6 +4,24 @@ import { createMachine, interpret, StateMachine, assign } from '@xstate/fsm';
 export type BaseValues = object;
 
 /**
+ * Event object containing any new values to be updated
+ */
+type UpdateEvent<Values> = {
+  type: 'next';
+  values?: Partial<Values>;
+};
+
+/**
+ * @typeParam Values Generic type for object of values being gathered through the wizard steps
+ * @param values Current state of values gathered through the wizard
+ * @param event Event object containing any new values to be updated, see [[UpdateEvent]]
+ */
+export type WhenFunction<Values extends object = BaseValues> = (
+  values: Values,
+  event: UpdateEvent<Values>
+) => boolean;
+
+/**
  * @typeParam Values Generic type for object of values being gathered through the wizard steps
  *
  * A string is a shorthand for an always true conditional guard, i.e. `['nextStep', when(() => true)]`
@@ -66,9 +84,10 @@ type WizardEvent<Values extends object> =
  * An event handler for reacting when the wizard updates, i.e. after step progression or values have been updated
  */
 type ChangeHandler<
+  // eslint-disable-next-line no-use-before-define, @typescript-eslint/no-explicit-any
   StepMachine extends StateMachine.Machine<Values, WizardEvent<Values>, any>,
   Values extends object = BaseValues
-> = (wizard: RoboWizard<StepMachine, Values>) => void;
+> = (wizard: RoboWizard<StepMachine, Values>) => void; // eslint-disable-line no-use-before-define
 
 /**
  * @typeParam StepMachine Generic type for the configured state machine, based on the `Machine` type from [robot](https://thisrobot.life)
@@ -77,14 +96,20 @@ type ChangeHandler<
  * This class is the return value from [[createWizard]] and the only way to be instantiated.
  */
 class RoboWizard<
+  // eslint-disable-next-line no-use-before-define, @typescript-eslint/no-explicit-any
   StepMachine extends StateMachine.Machine<Values, WizardEvent<Values>, any>,
   Values extends object = BaseValues
 > {
   /** @ignore */
-  private _service?: StateMachine.Service<Values, WizardEvent<Values>, any>;
+  private _service?: StateMachine.Service<Values, WizardEvent<Values>, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   /** @ignore */
-  constructor(private machine: StepMachine) {}
+  private machine: StepMachine;
+
+  /** @ignore */
+  constructor(machine: StepMachine) {
+    this.machine = machine;
+  }
 
   /**
    * @param onChange [[ChangeHandler]] for reacting when the wizard updates, this will be called immediately
@@ -151,8 +176,8 @@ function getPreviousTarget<Values extends object>(
   if (typeof step.previous === 'string') {
     return step.previous;
   }
-  if (step.previous !== false && step.name !== steps[0].name) {
-    return steps[index - 1].name;
+  if (step.previous !== false && step.name !== steps[0]?.name) {
+    return steps[index - 1]?.name;
   }
   return undefined;
 }
@@ -162,14 +187,14 @@ function getNextTarget<Values extends object>(
   index: number,
   steps: StepConfig<Values>[]
 ) {
-  let stepName: string | undefined = undefined;
+  let stepName: string | undefined;
   if (typeof step.next === 'string') {
     stepName = step.next;
   } else if (
     step.next !== false &&
-    step.name !== steps[steps.length - 1].name
+    step.name !== steps[steps.length - 1]?.name
   ) {
-    stepName = steps[index + 1].name;
+    stepName = steps[index + 1]?.name;
   }
   return {
     target: stepName,
@@ -180,7 +205,7 @@ function getNextTarget<Values extends object>(
 function getNextTargets<Values extends object>(
   nextSteps: StepTransition<Values>[]
 ) {
-  return nextSteps.map(step => {
+  return nextSteps.map((step) => {
     const [stepName, guard] = typeof step === 'string' ? [step] : step;
     const { cond } = typeof guard === 'object' ? guard : { cond: () => true };
     return {
@@ -189,6 +214,16 @@ function getNextTargets<Values extends object>(
       actions: 'assignNewValues',
     };
   });
+}
+
+type MaybeTarget = { target: string | undefined };
+type HasTarget =
+  | Required<{ target: string }>
+  | Array<Required<{ target: string }>>;
+
+function hasTarget(config: MaybeTarget | MaybeTarget[]): config is HasTarget {
+  if (Array.isArray(config)) return config.every((o) => !!o.target);
+  return !!config.target;
 }
 
 /**
@@ -294,24 +329,26 @@ export function createWizard<Values extends object = BaseValues>(
   steps: FlowStep<Values>[],
   initialValues: Values = {} as Values
 ) {
-  const normalizedSteps: StepConfig<Values>[] = steps.map(step =>
+  const normalizedSteps: StepConfig<Values>[] = steps.map((step) =>
     typeof step === 'string' ? { name: step } : step
   );
   const config: StateMachine.Config<Values, WizardEvent<Values>> = {
     id: 'robo-wizard',
-    initial: normalizedSteps[0].name,
+    initial: normalizedSteps[0]?.name ?? 'unknown',
     context: initialValues,
     states: normalizedSteps.reduce<
       StateMachine.Config<Values, WizardEvent<Values>>['states']
     >((result, step, index) => {
+      const previousTarget = getPreviousTarget(step, index, normalizedSteps);
+      const nextTarget = Array.isArray(step.next)
+        ? getNextTargets(step.next)
+        : getNextTarget(step, index, normalizedSteps);
+
+      // eslint-disable-next-line no-param-reassign
       result[step.name] = {
         on: {
-          previous: {
-            target: getPreviousTarget(step, index, normalizedSteps),
-          },
-          next: Array.isArray(step.next)
-            ? getNextTargets(step.next)
-            : getNextTarget(step, index, normalizedSteps),
+          ...(previousTarget ? { previous: { target: previousTarget } } : {}),
+          ...(hasTarget(nextTarget) ? { next: nextTarget } : {}),
         },
       };
       return result;
@@ -337,26 +374,8 @@ export function createWizard<Values extends object = BaseValues>(
 }
 
 /**
- * Event object containing any new values to be updated
- */
-type UpdateEvent<Values> = {
-  type: 'next';
-  values?: Partial<Values>;
-};
-
-/**
  * @typeParam Values Generic type for object of values being gathered through the wizard steps
- * @param values Current state of values gathered through the wizard
- * @param event Event object containing any new values to be updated, see [[UpdateEvent]]
- */
-export type WhenFunction<Values extends object = BaseValues> = (
-  values: Values,
-  event: UpdateEvent<Values>
-) => boolean;
-
-/**
- * @typeParam Values Generic type for object of values being gathered through the wizard steps
- * @param fn Guard function to be called to test if the step should transition, see [[WhenFunction]]
+ * @param cond Guard function to be called to test if the step should transition, see [[WhenFunction]]
  * See [[createWizard]] for example usage
  */
 export function when<Values extends object = BaseValues>(

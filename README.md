@@ -76,26 +76,20 @@ Check out the [examples](./examples/) directory to see a sample of usage with HT
 
 ## Local Development
 
-This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx) and uses [pnpm](https://pnpm.io/) for package management.
+This project is built with [Vite](https://vitejs.dev/) and uses [pnpm](https://pnpm.io/) for package management.
 
 Below is a list of commands you will probably find useful.
 
 ### `pnpm start`
 
-Runs the project in development/watch mode. Your project will be rebuilt upon changes. TSDX has a special logger for you convenience. Error messages are pretty printed and formatted for compatibility VS Code's Problems tab.
-
-<img src="https://user-images.githubusercontent.com/4060187/52168303-574d3a00-26f6-11e9-9f3b-71dbec9ebfcb.gif" width="600" />
-
-Your library will be rebuilt if you make edits.
+Runs the project in development/watch mode. Your project will be rebuilt upon changes.
 
 ### `pnpm run build`
 
 Bundles the package to the `dist` folder.
-The package is optimized and bundled with Rollup into multiple formats (CommonJS, UMD, and ES Module).
-
-<img src="https://user-images.githubusercontent.com/4060187/52168322-a98e5b00-26f6-11e9-8cf6-222d716b75ef.gif" width="600" />
+The package is optimized and bundled with Rollup into multiple formats (UMD and ES Module).
 
 ### `pnpm test`
 
-Runs the test watcher (Jest) in an interactive mode.
+Runs the test watcher (Vitest) in an interactive mode.
 By default, runs tests related to files changed since the last commit.

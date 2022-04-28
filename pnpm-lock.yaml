@@ -7,6 +7,7 @@ overrides:
 specifiers:
   '@semantic-release/changelog': ^6.0.1
   '@semantic-release/git': ^10.0.1
+  '@tsconfig/node16-strictest-esm': ^1.0.1
   '@typescript-eslint/eslint-plugin': ^5.21.0
   '@typescript-eslint/parser': ^5.21.0
   '@vitest/ui': ^0.10.0
@@ -33,6 +34,7 @@ dependencies:
 devDependencies:
   '@semantic-release/changelog': 6.0.1_semantic-release@19.0.2
   '@semantic-release/git': 10.0.1_semantic-release@19.0.2
+  '@tsconfig/node16-strictest-esm': 1.0.1
   '@typescript-eslint/eslint-plugin': 5.21.0_qkphj4uotsplaxw5uwbni7kfxa
   '@typescript-eslint/parser': 5.21.0_5wsz2tb7zzudmaqxfve53vbauu
   '@vitest/ui': 0.10.0
@@ -457,6 +459,10 @@ packages:
       minimatch: 5.0.1
       mkdirp: 1.0.4
       path-browserify: 1.0.1
+    dev: true
+
+  /@tsconfig/node16-strictest-esm/1.0.1:
+    resolution: {integrity: sha512-+ZUodm4gDaDFOoawqTGbVUbIR6bBinMyOhUSle84nVv4HtQQwRM19H+8w2lhAgcqt66UBvoI2+5Hqh218fjKWQ==}
     dev: true
 
   /@types/argparse/1.0.38:

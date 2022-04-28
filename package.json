@@ -1,14 +1,21 @@
 {
   "version": "1.0.0",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "./dist/robo-wizard.umd.js",
+  "module": "./dist/robo-wizard.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/robo-wizard.es.js",
+      "require": "./dist/robo-wizard.umd.js"
+    }
+  },
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build -i src/index.ts --name RoboWizard --format cjs,esm,umd",
+    "start": "vite build --watch",
+    "build": "vite build",
     "build:docs": "typedoc --out _site src/index.ts",
     "test": "tsdx test",
     "lint": "tsdx lint",
@@ -28,7 +35,6 @@
   },
   "name": "robo-wizard",
   "author": "HipsterBrown",
-  "module": "dist/robo-wizard.esm.js",
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
@@ -38,7 +44,9 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
     "typedoc": "^0.22.15",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "vite": "^2.9.6",
+    "vite-plugin-dts": "^1.1.1"
   },
   "dependencies": {
     "@xstate/fsm": "^1.5.2"

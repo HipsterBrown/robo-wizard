@@ -1,9 +1,14 @@
 {
-  "include": ["src", "types"],
+  "include": [
+    "src",
+    "types"
+  ],
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2020",
     "module": "esnext",
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "esnext"
+    ],
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,
@@ -22,7 +27,10 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "*": ["src/*", "node_modules/*"]
+      "*": [
+        "src/*",
+        "node_modules/*"
+      ]
     },
     "jsx": "react",
     "esModuleInterop": true

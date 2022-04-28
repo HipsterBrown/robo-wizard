@@ -6,20 +6,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
 
-      - name: Restore cache
-        uses: actions/cache@v1
+      - name: pnpm setup
+        uses: pnpm/action-setup@v2.0.1
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          version: 7.0.0-rc.9
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
 
       - name: Build
         run: |
-          npm ci
-          NODE_ENV=production npm run build
+          pnpm install
+          NODE_ENV=production pnpm run build
 
       - name: Test
         run: |
-          npm run lint
-          npm test
+          pnpm run lint
+          pnpm run test

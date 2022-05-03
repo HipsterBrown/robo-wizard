@@ -327,7 +327,14 @@ function hasTarget(config: MaybeTarget | MaybeTarget[]): config is HasTarget {
  */
 export function createWizard<Values extends object = BaseValues>(
   steps: FlowStep<Values>[],
-  initialValues: Values = {} as Values
+  initialValues: Values = {} as Values,
+  actions: {
+    navigate?: StateMachine.ActionFunction<Values, WizardEvent<Values>>;
+  } = {
+    navigate: () => {
+      /* noop */
+    },
+  }
 ) {
   const normalizedSteps: StepConfig<Values>[] = steps.map((step) =>
     typeof step === 'string' ? { name: step } : step
@@ -346,6 +353,7 @@ export function createWizard<Values extends object = BaseValues>(
 
       // eslint-disable-next-line no-param-reassign
       result[step.name] = {
+        entry: ['navigate'],
         on: {
           ...(previousTarget ? { previous: { target: previousTarget } } : {}),
           ...(hasTarget(nextTarget) ? { next: nextTarget } : {}),
@@ -367,6 +375,7 @@ export function createWizard<Values extends object = BaseValues>(
   );
   const machine = createMachine(config, {
     actions: {
+      ...actions,
       assignNewValues,
     },
   });

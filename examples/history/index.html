@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <title>Robo Wizard Example App</title>
+</head>
+
+<body>
+  <div class="px-5">
+    <h1 class="text-2xl font-bold">Robo Wizard w/ History</h1>
+
+    <p class="font-semibold mb-8 underline uppercase">
+      <span data-current-step></span> step
+    </p>
+
+    <form data-event="next" class="mb-4">
+      <div class="mb-6 hidden" data-step="first">
+        <label for="firstName" id="firstName-label" class="block mb-2">First Name:</label>
+        <input class="border-2 border-solid border-gray-600 px-4 py-2" type="text" name="firstName" id="firstName"
+          aria-label="firstName-label" />
+      </div>
+
+      <div class="mb-6 hidden" data-step="second">
+        <label for="lastName" id="lastName-label" class="block mb-2">Last Name:</label>
+        <input class="border-2 border-solid border-gray-600 px-4 py-2" type="text" name="lastName" id="lastName"
+          aria-label="lastName-label" />
+      </div>
+
+      <div class="mb-6 hidden" data-step="third">
+        <p class="text-green-600">Welcome <span data-values="firstName"></span> <span data-values="lastName"></span>!
+        </p>
+      </div>
+
+      <div class="flex w-32 justify-between">
+        <button type="button" data-event="previous" class="p-3 mr-4" role="link">
+          Previous
+        </button>
+        <button type="submit" class="py-3 px-8 border-2 border-gray-900">
+          Next
+        </button>
+      </div>
+    </form>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

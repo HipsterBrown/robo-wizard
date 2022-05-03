@@ -1,5 +1,5 @@
-import { Children, createContext, useContext, useReducer, useState } from 'react';
-import { Route, Routes, useNavigate, useRoutes, Navigate, RouteProps } from 'react-router';
+import { Children, createContext, useContext, useReducer, useState, useEffect } from 'react';
+import { Route, Routes, useNavigate, useRoutes, Navigate, RouteProps, useLocation } from 'react-router';
 import { createWizard } from 'robo-wizard'
 
 const WizardContext = createContext<null | ReturnType<typeof createWizard>>(null);
@@ -44,5 +44,13 @@ function useWizard(steps, initialValues) {
     wizard.start(refreshState)
     return wizard;
   })
-  return currentWizard;
+  const location = useLocation();
+  const stepFromLocation = location.pathname.split('/').pop();
+
+  useEffect(() => {
+    if (stepFromLocation !== currentWizard.currentStep) {
+      currentWizard.sync({ step: stepFromLocation })
+    }
+  }, [stepFromLocation, currentWizard])
+  return Object.create(currentWizard);
 }

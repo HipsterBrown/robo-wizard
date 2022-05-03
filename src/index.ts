@@ -7,7 +7,7 @@ export type BaseValues = object;
  * Event object containing any new values to be updated
  */
 type UpdateEvent<Values> = {
-  type: 'next';
+  type: 'next' | 'previous';
   values?: Partial<Values>;
 };
 
@@ -69,12 +69,16 @@ export type FlowStep<Values extends object = BaseValues> =
 
 type WizardEvent<Values extends object> =
   | {
-      type: 'next';
-      values?: Partial<Values>;
-    }
+    type: 'next';
+    values?: Partial<Values>;
+  }
   | {
-      type: 'previous';
-    };
+    type: 'previous';
+  }
+  | {
+    type: string;
+    values?: Partial<Values>;
+  };
 
 /**
  * @typeParam StepMachine Generic type for the configured state machine, based on [[Machine]] from [robot](https://thisrobot.life)
@@ -87,7 +91,7 @@ type ChangeHandler<
   // eslint-disable-next-line no-use-before-define, @typescript-eslint/no-explicit-any
   StepMachine extends StateMachine.Machine<Values, WizardEvent<Values>, any>,
   Values extends object = BaseValues
-> = (wizard: RoboWizard<StepMachine, Values>) => void; // eslint-disable-line no-use-before-define
+  > = (wizard: RoboWizard<StepMachine, Values>) => void; // eslint-disable-line no-use-before-define
 
 /**
  * @typeParam StepMachine Generic type for the configured state machine, based on the `Machine` type from [robot](https://thisrobot.life)
@@ -99,7 +103,7 @@ class RoboWizard<
   // eslint-disable-next-line no-use-before-define, @typescript-eslint/no-explicit-any
   StepMachine extends StateMachine.Machine<Values, WizardEvent<Values>, any>,
   Values extends object = BaseValues
-> {
+  > {
   /** @ignore */
   private _service?: StateMachine.Service<Values, WizardEvent<Values>, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
@@ -155,6 +159,14 @@ class RoboWizard<
    */
   public goToPreviousStep(event: Partial<UpdateEvent<Values>> = {}) {
     this.service.send({ type: 'previous', ...event });
+  }
+
+  /**
+   * @param event Optional object with a `step` field to described what the current step _should_ be
+   * Sync the external updated step with internal service
+   */
+  public sync(event: { step: string }) {
+    this.service.send({ type: event.step });
   }
 
   /** @ignore */
@@ -331,13 +343,17 @@ export function createWizard<Values extends object = BaseValues>(
   actions: {
     navigate?: StateMachine.ActionFunction<Values, WizardEvent<Values>>;
   } = {
-    navigate: () => {
-      /* noop */
-    },
-  }
+      navigate: () => {
+        /* noop */
+      },
+    }
 ) {
   const normalizedSteps: StepConfig<Values>[] = steps.map((step) =>
     typeof step === 'string' ? { name: step } : step
+  );
+  const syncTargets = normalizedSteps.reduce(
+    (result, { name }) => ({ ...result, [name]: { target: name } }),
+    {}
   );
   const config: StateMachine.Config<Values, WizardEvent<Values>> = {
     id: 'robo-wizard',
@@ -357,6 +373,7 @@ export function createWizard<Values extends object = BaseValues>(
         on: {
           ...(previousTarget ? { previous: { target: previousTarget } } : {}),
           ...(hasTarget(nextTarget) ? { next: nextTarget } : {}),
+          ...syncTargets,
         },
       };
       return result;
@@ -375,8 +392,10 @@ export function createWizard<Values extends object = BaseValues>(
   );
   const machine = createMachine(config, {
     actions: {
-      ...actions,
       assignNewValues,
+      navigate: (values, event) => {
+        if (['next', 'previous'].includes(event.type)) actions.navigate?.(values, event)
+      }
     },
   });
   return new RoboWizard<typeof machine, Values>(machine);

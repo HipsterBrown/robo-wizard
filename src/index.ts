@@ -7,7 +7,7 @@ export type BaseValues = object;
  * Event object containing any new values to be updated
  */
 type UpdateEvent<Values> = {
-  type: 'next';
+  type: 'next' | 'previous';
   values?: Partial<Values>;
 };
 
@@ -74,6 +74,10 @@ type WizardEvent<Values extends object> =
     }
   | {
       type: 'previous';
+    }
+  | {
+      type: string;
+      values?: Partial<Values>;
     };
 
 /**
@@ -155,6 +159,14 @@ class RoboWizard<
    */
   public goToPreviousStep(event: Partial<UpdateEvent<Values>> = {}) {
     this.service.send({ type: 'previous', ...event });
+  }
+
+  /**
+   * @param event Optional object with a `step` field to described what the current step _should_ be
+   * Sync the external updated step with internal service
+   */
+  public sync(event: { step: string }) {
+    this.service.send({ type: event.step });
   }
 
   /** @ignore */
@@ -327,10 +339,21 @@ function hasTarget(config: MaybeTarget | MaybeTarget[]): config is HasTarget {
  */
 export function createWizard<Values extends object = BaseValues>(
   steps: FlowStep<Values>[],
-  initialValues: Values = {} as Values
+  initialValues: Values = {} as Values,
+  actions: {
+    navigate?: StateMachine.ActionFunction<Values, WizardEvent<Values>>;
+  } = {
+    navigate: () => {
+      /* noop */
+    },
+  }
 ) {
   const normalizedSteps: StepConfig<Values>[] = steps.map((step) =>
     typeof step === 'string' ? { name: step } : step
+  );
+  const syncTargets = normalizedSteps.reduce(
+    (result, { name }) => ({ ...result, [name]: { target: name } }),
+    {}
   );
   const config: StateMachine.Config<Values, WizardEvent<Values>> = {
     id: 'robo-wizard',
@@ -346,9 +369,11 @@ export function createWizard<Values extends object = BaseValues>(
 
       // eslint-disable-next-line no-param-reassign
       result[step.name] = {
+        entry: ['navigate'],
         on: {
           ...(previousTarget ? { previous: { target: previousTarget } } : {}),
           ...(hasTarget(nextTarget) ? { next: nextTarget } : {}),
+          ...syncTargets,
         },
       };
       return result;
@@ -368,6 +393,10 @@ export function createWizard<Values extends object = BaseValues>(
   const machine = createMachine(config, {
     actions: {
       assignNewValues,
+      navigate: (values, event) => {
+        if (['next', 'previous'].includes(event.type))
+          actions.navigate?.(values, event);
+      },
     },
   });
   return new RoboWizard<typeof machine, Values>(machine);

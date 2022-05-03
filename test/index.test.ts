@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { createWizard, when, WhenFunction } from '../src';
 
 describe('createWizard', () => {
@@ -180,4 +180,44 @@ describe('createWizard', () => {
       expect(wizard.currentStep).toBe('third');
     });
   });
+
+  describe('when passing navigate action', () => {
+    const steps = ['first', 'second', 'third'];
+
+    it('calls navigate when entering a step', () => {
+      const navigate = vi.fn();
+      const wizard = createWizard(steps, {}, { navigate })
+
+      wizard.start(() => { });
+
+      expect(navigate).not.toHaveBeenCalled();
+
+      wizard.goToNextStep()
+
+      expect(navigate).toHaveBeenCalled();
+
+      wizard.goToPreviousStep()
+
+      expect(navigate).toHaveBeenCalledTimes(2);
+    })
+  })
+
+  describe('when calling sync method', () => {
+    const steps = ['first', 'second', 'third'];
+
+    it('updates the currentStep without navigating', () => {
+      const navigate = vi.fn();
+      const wizard = createWizard(steps, {}, { navigate })
+
+      wizard.start(() => { });
+
+      expect(wizard.currentStep).toBe('first')
+
+      wizard.sync({ step: 'third' });
+
+      expect(wizard.currentStep).toBe('third')
+
+      expect(navigate).not.toHaveBeenCalled();
+    })
+  })
 });

@@ -3,6 +3,7 @@
 node_modules
 dist
 examples/**/package-lock.json
+examples/**/pnpm-lock.yaml
 examples/**/.cache
 examples/**/.parcel-cache
 docs/

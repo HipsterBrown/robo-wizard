@@ -69,16 +69,16 @@ export type FlowStep<Values extends object = BaseValues> =
 
 type WizardEvent<Values extends object> =
   | {
-    type: 'next';
-    values?: Partial<Values>;
-  }
+      type: 'next';
+      values?: Partial<Values>;
+    }
   | {
-    type: 'previous';
-  }
+      type: 'previous';
+    }
   | {
-    type: string;
-    values?: Partial<Values>;
-  };
+      type: string;
+      values?: Partial<Values>;
+    };
 
 /**
  * @typeParam StepMachine Generic type for the configured state machine, based on [[Machine]] from [robot](https://thisrobot.life)
@@ -91,7 +91,7 @@ type ChangeHandler<
   // eslint-disable-next-line no-use-before-define, @typescript-eslint/no-explicit-any
   StepMachine extends StateMachine.Machine<Values, WizardEvent<Values>, any>,
   Values extends object = BaseValues
-  > = (wizard: RoboWizard<StepMachine, Values>) => void; // eslint-disable-line no-use-before-define
+> = (wizard: RoboWizard<StepMachine, Values>) => void; // eslint-disable-line no-use-before-define
 
 /**
  * @typeParam StepMachine Generic type for the configured state machine, based on the `Machine` type from [robot](https://thisrobot.life)
@@ -103,7 +103,7 @@ class RoboWizard<
   // eslint-disable-next-line no-use-before-define, @typescript-eslint/no-explicit-any
   StepMachine extends StateMachine.Machine<Values, WizardEvent<Values>, any>,
   Values extends object = BaseValues
-  > {
+> {
   /** @ignore */
   private _service?: StateMachine.Service<Values, WizardEvent<Values>, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
@@ -343,10 +343,10 @@ export function createWizard<Values extends object = BaseValues>(
   actions: {
     navigate?: StateMachine.ActionFunction<Values, WizardEvent<Values>>;
   } = {
-      navigate: () => {
-        /* noop */
-      },
-    }
+    navigate: () => {
+      /* noop */
+    },
+  }
 ) {
   const normalizedSteps: StepConfig<Values>[] = steps.map((step) =>
     typeof step === 'string' ? { name: step } : step
@@ -394,8 +394,9 @@ export function createWizard<Values extends object = BaseValues>(
     actions: {
       assignNewValues,
       navigate: (values, event) => {
-        if (['next', 'previous'].includes(event.type)) actions.navigate?.(values, event)
-      }
+        if (['next', 'previous'].includes(event.type))
+          actions.navigate?.(values, event);
+      },
     },
   });
   return new RoboWizard<typeof machine, Values>(machine);

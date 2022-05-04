@@ -10,6 +10,14 @@
     "dist"
   ],
   "compilerOptions": {
-    "rootDir": "src"
+    "rootDir": "src",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2019"
+    ],
+    "jsx": "react-jsx",
+    "target": "es2020",
+    "skipLibCheck": true
   }
 }

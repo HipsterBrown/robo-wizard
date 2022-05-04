@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
-    "jsx": "react"
+    "jsx": "react-jsx",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "es2020"
+    ]
   }
 }

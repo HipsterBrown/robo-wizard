@@ -1,19 +1,5 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { createWizard, FlowStep, BaseValues } from 'robo-wizard';
-
-function useWizard<Values extends object = BaseValues>(
-  steps: FlowStep<Values>[],
-  initialValues: Values = {} as Values
-) {
-  const [_, refreshState] = React.useState<boolean>(false);
-  const [currentWizard] = React.useState(() => {
-    const wizard = createWizard<Values>(steps, initialValues);
-    wizard.start(() => refreshState(s => !s));
-    return wizard;
-  });
-  return currentWizard;
-}
+import { createRoot } from 'react-dom/client';
+import { useWizard } from '@robo-wizard/react';
 
 type Values = {
   firstName?: string;
@@ -25,11 +11,7 @@ const App: React.FC = () => {
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = event => {
     event.preventDefault();
-    const data = new FormData(event.target as HTMLFormElement);
-    const values = {};
-    data.forEach((value, field) => {
-      values[field] = value;
-    });
+    const values = Object.fromEntries(new FormData(event.currentTarget))
     wizard.goToNextStep({ values });
   };
 
@@ -108,4 +90,4 @@ const App: React.FC = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('app'));
+createRoot(document.getElementById('app')).render(<App />);

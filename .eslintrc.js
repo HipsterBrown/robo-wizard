@@ -9,7 +9,25 @@ module.exports = {
     tsconfigRootDir: ".",
     project: ["./tsconfig.json"]
   },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", "tsx"]
+    },
+    "import/resolver": {
+      typescript: {}
+    },
+    "import/extensions": [".ts", ".tsx"]
+  },
   rules: {
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "import/prefer-default-export": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        ts: "never",
+        tsx: "never"
+      }
+    ]
   }
 }

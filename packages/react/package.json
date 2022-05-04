@@ -4,6 +4,10 @@
   "description": "RoboWizard components and hooks for React",
   "main": "./dist/robo-wizard_react.umd.js",
   "module": "./dist/robo-wizard_react.es.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "import": "./dist/robo-wizard_react.es.js",

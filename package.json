@@ -53,7 +53,9 @@
     },
     "peerDependencyRules": {
       "ignoreMissing": [
-        "@parcel/core"
+        "@types/react",
+        "react",
+        "react-dom"
       ]
     }
   },

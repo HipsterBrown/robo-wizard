@@ -13,6 +13,15 @@ export default defineConfig({
       fileName: format => `robo-wizard_react.${format}.js`
     },
     sourcemap: true,
+    rollupOptions: {
+      external: ['react', 'react-dom'],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDom'
+        }
+      }
+    }
   },
   plugins: [dts(), react()],
   test: {

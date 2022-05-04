@@ -1,0 +1,55 @@
+{
+  "name": "@robo-wizard/react",
+  "version": "1.0.0",
+  "description": "RoboWizard components and hooks for React",
+  "main": "./dist/robo-wizard_react.umd.js",
+  "module": "./dist/robo-wizard_react.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/robo-wizard_react.es.js",
+      "require": "./dist/robo-wizard_react.umd.js"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "typedocMain": "src/index.ts",
+  "sideEffects": false,
+  "scripts": {
+    "start": "vite build --watch",
+    "build": "vite build",
+    "test": "vitest",
+    "prepare": "vite build"
+  },
+  "keywords": [
+    "wizard",
+    "workflow",
+    "state machine",
+    "xstate"
+  ],
+  "author": "HipsterBrown",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HipsterBrown/robo-wizard.git",
+    "directory": "packages/react"
+  },
+  "dependencies": {
+    "robo-wizard": "workspace:*"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/react-hooks": "^8.0.0",
+    "@types/react": "^18.0.8",
+    "@types/react-dom": "^18.0.3",
+    "@vitejs/plugin-react": "^1.3.2",
+    "jsdom": "^19.0.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "vite": "^2.9.8",
+    "vite-plugin-dts": "^1.1.1",
+    "vitest": "^0.10.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  }
+}

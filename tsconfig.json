@@ -4,9 +4,11 @@
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,
-    "rootDir": "./src",
     "baseUrl": "./",
     "moduleResolution": "node",
     "skipLibCheck": true
-  }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

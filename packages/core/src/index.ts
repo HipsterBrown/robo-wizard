@@ -80,6 +80,9 @@ type WizardEvent<Values extends object> =
       values?: Partial<Values>;
     };
 
+export type WizardMachine<Values extends object = BaseValues> =
+  StateMachine.Machine<Values, WizardEvent<Values>, any>;
+
 /**
  * @typeParam StepMachine Generic type for the configured state machine, based on [[Machine]] from [robot](https://thisrobot.life)
  * @typeParam Values Generic type for object of values being gathered through the wizard steps
@@ -87,11 +90,9 @@ type WizardEvent<Values extends object> =
  *
  * An event handler for reacting when the wizard updates, i.e. after step progression or values have been updated
  */
-type ChangeHandler<
-  // eslint-disable-next-line no-use-before-define, @typescript-eslint/no-explicit-any
-  StepMachine extends StateMachine.Machine<Values, WizardEvent<Values>, any>,
-  Values extends object = BaseValues
-> = (wizard: RoboWizard<StepMachine, Values>) => void; // eslint-disable-line no-use-before-define
+type ChangeHandler<Values extends object = BaseValues> = (
+  wizard: RoboWizard<Values> // eslint-disable-line no-use-before-define
+) => void;
 
 /**
  * @typeParam StepMachine Generic type for the configured state machine, based on the `Machine` type from [robot](https://thisrobot.life)
@@ -99,19 +100,15 @@ type ChangeHandler<
  *
  * This class is the return value from [[createWizard]] and the only way to be instantiated.
  */
-class RoboWizard<
-  // eslint-disable-next-line no-use-before-define, @typescript-eslint/no-explicit-any
-  StepMachine extends StateMachine.Machine<Values, WizardEvent<Values>, any>,
-  Values extends object = BaseValues
-> {
+export class RoboWizard<Values extends object = BaseValues> {
   /** @ignore */
   private _service?: StateMachine.Service<Values, WizardEvent<Values>, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   /** @ignore */
-  private machine: StepMachine;
+  private machine: WizardMachine<Values>;
 
   /** @ignore */
-  constructor(machine: StepMachine) {
+  constructor(machine: WizardMachine<Values>) {
     this.machine = machine;
   }
 
@@ -121,7 +118,7 @@ class RoboWizard<
    *
    * This should be called before trying to access any other methods or properties, otherwise an Error will be thrown
    */
-  public start(onChange: ChangeHandler<StepMachine, Values>, values?: Values) {
+  public start(onChange: ChangeHandler<Values>, values?: Values) {
     if (this._service) return;
     this._service = interpret<Values, WizardEvent<Values>>(this.machine);
     this._service.subscribe(() => onChange(this));
@@ -242,6 +239,7 @@ function hasTarget(config: MaybeTarget | MaybeTarget[]): config is HasTarget {
  * @typeParam Values Generic type for object of values being gathered through the wizard steps
  * @param steps Configuration of steps for the wizard, see [[FlowStep]]
  * @param initialValues Optional object with intial values to use when starting the wizard
+ * @param actions Optional object with navigate field with a function to be called when entering a step
  *
  * Basic usage:
  * ```typescript
@@ -347,7 +345,7 @@ export function createWizard<Values extends object = BaseValues>(
       /* noop */
     },
   }
-) {
+): RoboWizard<Values> {
   const normalizedSteps: StepConfig<Values>[] = steps.map((step) =>
     typeof step === 'string' ? { name: step } : step
   );
@@ -390,7 +388,7 @@ export function createWizard<Values extends object = BaseValues>(
       return context;
     }
   );
-  const machine = createMachine(config, {
+  const machine = createMachine<Values, WizardEvent<Values>, any>(config, {
     actions: {
       assignNewValues,
       navigate: (values, event) => {
@@ -399,7 +397,7 @@ export function createWizard<Values extends object = BaseValues>(
       },
     },
   });
-  return new RoboWizard<typeof machine, Values>(machine);
+  return new RoboWizard<Values>(machine);
 }
 
 /**

@@ -13,19 +13,14 @@
   "files": [
     "dist"
   ],
+  "sideEffects": false,
   "scripts": {
     "start": "vite build --watch",
     "build": "vite build",
     "test": "vitest",
-    "lint": "eslint src/",
     "prepare": "vite build"
   },
   "typedocMain": "src/index.ts",
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
   "prettier": {
     "printWidth": 80,
     "semi": true,

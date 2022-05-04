@@ -6,7 +6,8 @@
   ],
   "exclude": [
     "node_modules",
-    "test"
+    "test",
+    "dist"
   ],
   "compilerOptions": {
     "rootDir": "src"

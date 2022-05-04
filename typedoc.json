@@ -1,0 +1,12 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "."
+  ],
+  "entryPointStrategy": "Packages",
+  "out": "_site",
+  "exclude": "**/*.test.ts",
+  "name": "Robo Wizard",
+  "readme": "./README.md",
+  "includeVersion": true
+}

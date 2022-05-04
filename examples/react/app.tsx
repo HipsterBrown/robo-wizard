@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { createWizard, FlowStep, BaseValues } from '../../src/index';
+import { createWizard, FlowStep, BaseValues } from 'robo-wizard';
 
 function useWizard<Values extends object = BaseValues>(
   steps: FlowStep<Values>[],

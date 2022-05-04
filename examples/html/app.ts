@@ -1,4 +1,4 @@
-import { createWizard } from '../../src';
+import { createWizard } from 'robo-wizard';
 
 type Values = {
   firstName?: string;

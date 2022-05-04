@@ -8,7 +8,8 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'RoboWizard',
       fileName: format => `robo-wizard.${format}.js`
-    }
+    },
+    sourcemap: true,
   },
   plugins: [dts()]
 })

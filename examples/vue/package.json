@@ -3,15 +3,16 @@
   "version": "0.0.0-example",
   "description": "Example usage of robo-wizard with Vue",
   "scripts": {
-    "start": "parcel index.html --host 0.0.0.0"
+    "start": "vite"
   },
   "author": "HipsterBrown",
   "license": "Apache-2.0",
   "dependencies": {
+    "robo-wizard": "workspace:*",
     "vue": "^3.2.33"
   },
   "devDependencies": {
-    "@parcel/transformer-vue": "^2.5.0",
-    "parcel": "^2.5.0"
+    "@vitejs/plugin-vue": "^2.3.2",
+    "vite": "^2.9.8"
   }
 }

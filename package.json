@@ -1,69 +1,61 @@
 {
-  "version": "1.1.0",
+  "name": "robo-wizard-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HipsterBrown/robo-wizard.git"
+  },
+  "author": "HipsterBrown <headhipster@hipsterbrown.com>",
   "license": "MIT",
-  "main": "./dist/robo-wizard.umd.js",
-  "module": "./dist/robo-wizard.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/robo-wizard.es.js",
-      "require": "./dist/robo-wizard.umd.js"
-    }
+  "bugs": {
+    "url": "https://github.com/HipsterBrown/robo-wizard/issues"
   },
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "homepage": "http://robo-wizard.js.org",
+  "packageManager": "pnpm@7.0.0",
+  "engines": {
+    "node": "^14.15.0 || >= 16.0.0",
+    "pnpm": ">=7.0.0"
+  },
   "scripts": {
-    "start": "vite build --watch",
-    "build": "vite build",
-    "build:docs": "typedoc --out _site src/index.ts",
-    "test": "vitest",
-    "lint": "eslint src/",
-    "prepare": "vite build",
-    "semantic-release": "semantic-release"
+    "build": "pnpm --filter \"./packages/**\" build",
+    "build:docs": "typedoc",
+    "lint": "eslint \"packages/**/src/**/*.ts\"",
+    "test": "pnpm --filter \"./packages/**\" test",
+    "semantic-release": "multi-semantic-release"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
-  "name": "robo-wizard",
-  "author": "HipsterBrown",
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
+    "@qiwi/multi-semantic-release": "^6.1.1",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "@tsconfig/node16-strictest-esm": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
-    "@vitest/ui": "^0.10.0",
     "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.4",
     "prettier": "^2.6.2",
     "semantic-release": "^19.0.2",
     "tslib": "^2.4.0",
     "typedoc": "^0.22.15",
-    "typescript": "^4.6.3",
-    "vite": "^2.9.6",
-    "vite-plugin-dts": "^1.1.1",
-    "vitest": "^0.10.0"
+    "typescript": "^4.6.3"
   },
-  "dependencies": {
-    "@xstate/fsm": "^1.5.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/HipsterBrown/robo-wizard.git"
+  "pnpm": {
+    "overrides": {
+      "node-notifier@<8.0.1": ">=8.0.1",
+      "marked@<4.0.10": ">=4.0.10"
+    },
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@parcel/core"
+      ]
+    }
   },
   "release": {
     "branches": [
@@ -88,11 +80,5 @@
         }
       ]
     ]
-  },
-  "pnpm": {
-    "overrides": {
-      "node-notifier@<8.0.1": ">=8.0.1",
-      "marked@<4.0.10": ">=4.0.10"
-    }
   }
 }

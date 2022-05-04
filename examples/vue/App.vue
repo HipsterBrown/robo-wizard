@@ -1,6 +1,6 @@
 <script lang="ts">
 import { reactive, computed } from 'vue';
-import { createWizard } from '../../src';
+import { createWizard } from 'robo-wizard';
 
 export default {
   setup() {

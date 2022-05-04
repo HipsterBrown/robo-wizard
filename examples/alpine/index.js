@@ -1,3 +1,3 @@
 import 'alpinejs';
-import { createWizard } from '../../src';
+import { createWizard } from 'robo-wizard';
 window.createWizard = createWizard;

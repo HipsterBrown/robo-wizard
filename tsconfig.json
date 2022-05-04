@@ -1,9 +1,5 @@
 {
   "extends": "@tsconfig/node16-strictest-esm/tsconfig.json",
-  "include": [
-    "src",
-    "types"
-  ],
   "compilerOptions": {
     "importHelpers": true,
     "declaration": true,
@@ -11,11 +7,6 @@
     "rootDir": "./src",
     "baseUrl": "./",
     "moduleResolution": "node",
-    "paths": {
-      "*": [
-        "src/*",
-        "node_modules/*"
-      ]
-    }
+    "skipLibCheck": true
   }
 }

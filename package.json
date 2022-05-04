@@ -18,9 +18,17 @@
     "pnpm": ">=7.0.0"
   },
   "scripts": {
-    "lint": "eslint \"packages/**/src/**/*.ts\""
+    "build": "pnpm --filter \"./packages/**\" build",
+    "build:docs": "typedoc",
+    "lint": "eslint \"packages/**/src/**/*.ts\"",
+    "test": "pnpm --filter \"./packages/**\" test",
+    "semantic-release": "multi-semantic-release"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
+    "@qiwi/multi-semantic-release": "^6.1.1",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "@tsconfig/node16-strictest-esm": "^1.0.1",
@@ -48,5 +56,29 @@
         "@parcel/core"
       ]
     }
+  },
+  "release": {
+    "branches": [
+      {
+        "name": "main"
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            "package.json",
+            "CHANGELOG.md"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ]
+    ]
   }
 }

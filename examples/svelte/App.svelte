@@ -1,8 +1,10 @@
 <script>
-  import { createWizard } from '../../src';
+  import { createWizard } from "robo-wizard";
 
-  let wizard = createWizard(['first', 'second', 'third']);
-  wizard.start(wiz => { wizard = wiz });
+  let wizard = createWizard(["first", "second", "third"]);
+  wizard.start((wiz) => {
+    wizard = wiz;
+  });
 
   function onSubmit(event) {
     const data = new FormData(event.target);
@@ -13,7 +15,7 @@
     wizard.goToNextStep({ values });
   }
 
-  $: fullName = `${wizard.currentValues.firstName} ${wizard.currentValues.lastName}`
+  $: fullName = `${wizard.currentValues.firstName} ${wizard.currentValues.lastName}`;
 </script>
 
 <div class="px-8">
@@ -24,7 +26,7 @@
   </p>
 
   <form on:submit|preventDefault={onSubmit}>
-    {#if wizard.currentStep === 'first'}
+    {#if wizard.currentStep === "first"}
       <label for="firstName" id="firstName-label" class="block mb-2">
         First Name:
       </label>
@@ -34,11 +36,11 @@
         name="firstName"
         id="firstName"
         aria-label="firstName-label"
-        value={wizard.currentValues.firstName || ''}
+        value={wizard.currentValues.firstName || ""}
       />
     {/if}
 
-    {#if wizard.currentStep === 'second'}
+    {#if wizard.currentStep === "second"}
       <label for="lastName" id="lastName-label" class="block mb-2">
         Last Name:
       </label>
@@ -48,11 +50,11 @@
         name="lastName"
         id="lastName"
         aria-label="lastName-label"
-        value={wizard.currentValues.lastName || ''}
+        value={wizard.currentValues.lastName || ""}
       />
     {/if}
 
-    {#if wizard.currentStep === 'third'}
+    {#if wizard.currentStep === "third"}
       <p class="text-green-600">
         Welcome {fullName}!
       </p>

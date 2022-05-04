@@ -3,13 +3,16 @@
   "version": "0.0.0-example",
   "description": "Example usage of robo-wizard with svelte",
   "scripts": {
-    "start": "parcel index.html --host 0.0.0.0"
+    "start": "vite"
   },
   "author": "HipsterBrown",
   "license": "Apache-2.0",
+  "dependencies": {
+    "robo-wizard": "workspace:*"
+  },
   "devDependencies": {
-    "parcel": "^2.5.0",
-    "parcel-transformer-svelte": "^1.2.3",
-    "svelte": "^3.22.2"
+    "@sveltejs/vite-plugin-svelte": "1.0.0-next.42",
+    "svelte": "^3.22.2",
+    "vite": "^2.9.8"
   }
 }

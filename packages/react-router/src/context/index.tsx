@@ -1,0 +1,120 @@
+import { Children, createContext, useContext, useEffect, PropsWithChildren, ReactNode, ReactElement } from 'react';
+import { Route, Routes, useNavigate, useRoutes, Navigate, useLocation } from 'react-router';
+import type { RoboWizard, BaseValues, StepConfig } from 'robo-wizard'
+import { useWizard } from '@robo-wizard/react'
+import { Step } from '../components'
+
+const WizardContext = createContext<null | RoboWizard>(null);
+
+export type WizardProviderProps<Values extends object> = PropsWithChildren<{
+  initialValues?: Values;
+}>
+
+function isReactElement(child: ReactNode): child is ReactElement {
+  return typeof child === 'object' && child !== null && 'type' in child;
+}
+
+/**
+ * @typeParam Values Optional object to describe values being gathered by the wizard
+ * @param props
+ *
+ * Create a routed wizard experience under a Router from [react-router](https://reactrouter.com)
+ *
+ * An example set up for the Wizard:
+ * ```tsx
+ * function App() {
+ *   return (
+ *     <BrowserRouter>
+ *       <Wizard<Values> initialValues={{ firstName: '', lastName: '' }}>
+ *         <Step name="first" element={<First />} />
+ *         <Step name="second" element={<Second />} />
+ *         <Step name="third" element={<Third />} />
+ *       </Wizard>
+ *     </BrowserRouter>
+ *   )
+ * }
+ * ```
+ *
+ * An example step component:
+ * ```tsx
+ * const First = () => {
+ *   const wizard = useWizardContext<Values>();
+ * 
+ *   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+ *     event.preventDefault();
+ *     const values = Object.fromEntries(new FormData(event.currentTarget))
+ *     wizard.goToNextStep({ values })
+ *   }
+ * 
+ *   return (
+ *     <>
+ *       <p>{wizard.currentStep} step</p>
+ *       <form onSubmit={onSubmit}>
+ *         <div>
+ *           <label htmlFor="firstName" id="firstName-label">
+ *             First Name:
+ *           </label>
+ *           <input
+ *             type="text"
+ *             name="firstName"
+ *             id="firstName"
+ *             aria-labelledby="firstName-label"
+ *             defaultValue={wizard.currentValues.firstName}
+ *             autoFocus={true}
+ *           />
+ *         </div>
+ *         <div>
+ *           <button type="button" onClick={() => wizard.goToPreviousStep()}role="link" >Previous</button>
+ *           <button type="submit">Next</button>
+ *         </div>
+ *       </form>
+ *     </>
+ *   )
+ * }
+ * ```
+ **/
+export function Wizard<Values extends object = BaseValues>({ children, initialValues = {} as Values }: WizardProviderProps<Values>) {
+  if (typeof children !== 'object' || children === null) throw new Error('WizardProvider must have at least one child Step component')
+
+  const steps = Children.map(children, child => {
+    if (isReactElement(child) && child.type === Step) {
+      return { ...child.props as StepConfig, path: child.props.name as string };
+    }
+    return null;
+  })?.filter(Boolean) ?? [];
+  const navigate = useNavigate();
+  const location = useLocation();
+  const wizard = useWizard(steps, initialValues, {
+    navigate: () => {
+      navigate(wizard.currentStep);
+    }
+  });
+  const step = useRoutes(steps)
+  const stepFromLocation = location.pathname.split('/').pop();
+
+  useEffect(() => {
+    if (stepFromLocation && stepFromLocation !== wizard.currentStep) {
+      wizard.sync({ step: stepFromLocation })
+    }
+  }, [stepFromLocation, wizard])
+
+  return (
+    <WizardContext.Provider value={Object.create(wizard)}>
+      {step}
+      <Routes>
+        <Route index={true} element={<Navigate to={String(steps[0]?.name)} replace={true} />} />
+      </Routes>
+    </WizardContext.Provider>
+  )
+}
+
+/**
+ * @typeParam Values - object describing the [[currentValues]] gathered by [[RoboWizard]]
+ * 
+ * Access the [[RoboWizard]] from the [[Wizard]] Context Provider 
+ **/
+export function useWizardContext<Values extends object = BaseValues>() {
+  const wizard = useContext(WizardContext);
+  if (wizard === null) throw new Error('useWizardContext must be used within WizardProvider')
+  return wizard as RoboWizard<Values>;
+}

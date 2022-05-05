@@ -12,7 +12,7 @@
     "react-dom": "^18.1.0",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
-    "robo-wizard": "workspace:*"
+    "@robo-wizard/react-router": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.0.8",

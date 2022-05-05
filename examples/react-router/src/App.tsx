@@ -1,9 +1,14 @@
 import type { FormEvent } from 'react';
 import { BrowserRouter } from 'react-router-dom'
-import { Step, useWizardContext, WizardProvider } from './wizard-context'
+import { Step, useWizardContext, Wizard } from '@robo-wizard/react-router'
+
+type Values = {
+  firstName?: string;
+  lastName?: string;
+}
 
 const First = () => {
-  const wizard = useWizardContext();
+  const wizard = useWizardContext<Values>();
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -41,7 +46,7 @@ const First = () => {
 }
 
 const Second = () => {
-  const wizard = useWizardContext();
+  const wizard = useWizardContext<Values>();
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -79,7 +84,7 @@ const Second = () => {
 }
 
 const Third = () => {
-  const wizard = useWizardContext();
+  const wizard = useWizardContext<Values>();
 
   return (
     <>
@@ -114,11 +119,11 @@ function App() {
     <div className="px-5">
       <h1 className="text-2xl font-bold">Robo Wizard w/ React-Router</h1>
       <BrowserRouter>
-        <WizardProvider initialValues={{ firstName: '', lastName: '' }}>
+        <Wizard<Values> initialValues={{ firstName: '', lastName: '' }}>
           <Step name="first" element={<First />} />
           <Step name="second" element={<Second />} />
           <Step name="third" element={<Third />} />
-        </WizardProvider>
+        </Wizard>
       </BrowserRouter>
     </div>
   )

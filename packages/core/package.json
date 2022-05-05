@@ -29,6 +29,7 @@
   },
   "name": "robo-wizard",
   "author": "HipsterBrown",
+  "homepage": "http://robo-wizard.js.org",
   "devDependencies": {
     "@vitest/ui": "^0.10.0",
     "tslib": "^2.4.0",

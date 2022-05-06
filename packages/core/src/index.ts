@@ -69,16 +69,16 @@ export type FlowStep<Values extends object = BaseValues> =
 
 export type WizardEvent<Values extends object> =
   | {
-    type: 'next';
-    values?: Partial<Values>;
-  }
+      type: 'next';
+      values?: Partial<Values>;
+    }
   | {
-    type: 'previous';
-  }
+      type: 'previous';
+    }
   | {
-    type: string;
-    values?: Partial<Values>;
-  };
+      type: string;
+      values?: Partial<Values>;
+    };
 
 export type WizardMachine<Values extends object = BaseValues> =
   StateMachine.Machine<Values, WizardEvent<Values>, any>;
@@ -241,7 +241,7 @@ function hasTarget(config: MaybeTarget | MaybeTarget[]): config is HasTarget {
  * @param initialValues Optional object with intial values to use when starting the wizard
  * @param actions Optional object with navigate field with a function to be called when entering a step
  *
- * 
+ *
  * @example <caption>Initial set up with a listener for updates to the wizard</caption>
  * ```typescript
  * import { createWizard } from 'robo-wizard';
@@ -343,10 +343,10 @@ export function createWizard<Values extends object = BaseValues>(
   actions: {
     navigate?: StateMachine.ActionFunction<Values, WizardEvent<Values>>;
   } = {
-      navigate: () => {
-        /* noop */
-      },
-    }
+    navigate: () => {
+      /* noop */
+    },
+  }
 ): RoboWizard<Values> {
   const normalizedSteps: StepConfig<Values>[] = steps.map((step) =>
     typeof step === 'string' ? { name: step } : step

@@ -19,7 +19,8 @@
   },
   "scripts": {
     "build": "pnpm --filter \"./packages/**\" build",
-    "build:docs": "typedoc",
+    "build:docs": "pnpm --filter docs build",
+    "start:docs": "pnpm --filter docs start",
     "lint": "eslint \"packages/**/src/**/*.ts\"",
     "test": "pnpm --filter \"./packages/**\" test",
     "semantic-release": "multi-semantic-release"

@@ -21,3 +21,7 @@
   align-items: center;
   justify-content: center;
 }
+
+.u-color-white {
+  color: var(--ifm-color-white) !important;
+}

@@ -74,6 +74,10 @@ const config = {
     ({
       navbar: {
         title: 'Robo Wizard',
+        logo: {
+          alt: 'Robo Wizard',
+          src: 'img/robo-wizard.png'
+        },
         items: [
           {
             type: 'doc',

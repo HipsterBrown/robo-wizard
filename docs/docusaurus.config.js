@@ -12,7 +12,7 @@ const config = {
   url: 'http://robo-wizard.js.org',
   baseUrl: '/',
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 
   // GitHub pages deployment config.
@@ -36,7 +36,7 @@ const config = {
         "entryPointStrategy": "packages",
         "exclude": "../**/*.test.ts",
         "name": "API",
-        "readme": path.join(__dirname, '..', 'README.md'),
+        "readme": path.join(__dirname, '..', 'packages', 'README.md'),
         "includeVersion": true,
         "tsconfig": path.join(__dirname, '..', 'tsconfig.json')
       }
@@ -78,6 +78,12 @@ const config = {
           src: 'img/robo-wizard.png'
         },
         items: [
+          {
+            type: 'doc',
+            docId: 'intro',
+            position: 'left',
+            label: 'Overview',
+          },
           {
             type: 'doc',
             docId: 'api/index',

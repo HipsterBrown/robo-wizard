@@ -1,6 +1,6 @@
 # Robo Wizard
 
-![](./docs/static/image/robo-wizard.png)
+![](./docs/static/img/robo-wizard.png)
 
 Robo Wizard is a library and collection of packages for building multi-step workflows backed by a state machine using [@xstate/fsm](https://xstate.js.org/docs/packages/xstate-fsm/).
 

@@ -20,7 +20,8 @@ function isReactElement(child: ReactNode): child is ReactElement {
  *
  * Create a routed wizard experience under a Router from [react-router](https://reactrouter.com)
  *
- * An example set up for the Wizard:
+ * 
+ * @example <caption>Set up the Wizard under a BrowserRouter</caption>
  * ```tsx
  * function App() {
  *   return (
@@ -35,7 +36,8 @@ function isReactElement(child: ReactNode): child is ReactElement {
  * }
  * ```
  *
- * An example step component:
+ * 
+ * @example <caption>An example step component</caption>
  * ```tsx
  * const First = () => {
  *   const wizard = useWizardContext<Values>();

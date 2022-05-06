@@ -26,7 +26,7 @@ export type WhenFunction<Values extends object = BaseValues> = (
  *
  * A string is a shorthand for an always true conditional guard, i.e. `['nextStep', when(() => true)]`
  * The array version should be a tuple with the string name of a step, paired with a guard, like [[when]]:
- *
+ * @example
  * ```typescript
  * [
  *   ['conditionalStep', when((currentValues, { values }) => values.showConditional === true)],
@@ -67,18 +67,18 @@ export type FlowStep<Values extends object = BaseValues> =
   | string
   | StepConfig<Values>;
 
-type WizardEvent<Values extends object> =
+export type WizardEvent<Values extends object> =
   | {
-      type: 'next';
-      values?: Partial<Values>;
-    }
+    type: 'next';
+    values?: Partial<Values>;
+  }
   | {
-      type: 'previous';
-    }
+    type: 'previous';
+  }
   | {
-      type: string;
-      values?: Partial<Values>;
-    };
+    type: string;
+    values?: Partial<Values>;
+  };
 
 export type WizardMachine<Values extends object = BaseValues> =
   StateMachine.Machine<Values, WizardEvent<Values>, any>;
@@ -241,7 +241,8 @@ function hasTarget(config: MaybeTarget | MaybeTarget[]): config is HasTarget {
  * @param initialValues Optional object with intial values to use when starting the wizard
  * @param actions Optional object with navigate field with a function to be called when entering a step
  *
- * Basic usage:
+ * 
+ * @example <caption>Initial set up with a listener for updates to the wizard</caption>
  * ```typescript
  * import { createWizard } from 'robo-wizard';
  *
@@ -263,7 +264,7 @@ function hasTarget(config: MaybeTarget | MaybeTarget[]): config is HasTarget {
  * console.log(wizard.currentStep); // second
  * ```
  *
- * Gathering values:
+ * @example <caption>Gathering values through each step when progressing forward</caption>
  * ```typescript
  * import { createWizard } from 'robo-wizard';
  *
@@ -286,6 +287,7 @@ function hasTarget(config: MaybeTarget | MaybeTarget[]): config is HasTarget {
  * ```
  *
  * By default, the wizard will progress linearly in the order of array passed to `createWizard`. That behavior can be overriden by passing an [[StepConfig]] to in place of the string step name:
+ * @example
  * ```typescript
  * import { createWizard } from 'robo-wizard';
  *
@@ -305,7 +307,7 @@ function hasTarget(config: MaybeTarget | MaybeTarget[]): config is HasTarget {
  * console.log(wizard.currentStep); // first
  * ```
  *
- * Progression can be conditional using the [[when]] helper:
+ * @example <caption>Progression can be conditional using the [[when]] helper</caption>
  * ```typescript
  * import { createWizard, when } from 'robo-wizard';
  *
@@ -341,10 +343,10 @@ export function createWizard<Values extends object = BaseValues>(
   actions: {
     navigate?: StateMachine.ActionFunction<Values, WizardEvent<Values>>;
   } = {
-    navigate: () => {
-      /* noop */
-    },
-  }
+      navigate: () => {
+        /* noop */
+      },
+    }
 ): RoboWizard<Values> {
   const normalizedSteps: StepConfig<Values>[] = steps.map((step) =>
     typeof step === 'string' ? { name: step } : step

@@ -7,7 +7,7 @@ import { createWizard, FlowStep, BaseValues } from "robo-wizard";
  * @param initialValues Optional object with intial values to use when starting the wizard
  * @param actions Optional object with navigate field with a function to be called when entering a step
  *
- * Basic usage:
+ * @example <caption>Basic usage</caption>
  * ```tsx
  *
  *  const App: React.FC = () => {
@@ -20,25 +20,18 @@ import { createWizard, FlowStep, BaseValues } from "robo-wizard";
  *    };
 
  *    return (
- *      <div className="px-5">
- *        <h1 className="text-2xl font-bold">Robo Wizard w/ React</h1>
-
- *        <p className="font-semibold mb-8 underline uppercase">
- *          {wizard.currentStep} step
- *        </p>
-
- *        <form onSubmit={onSubmit} className="mb-4">
+ *      <div>
+ *        <p>{wizard.currentStep} step</p>
+ *        <form onSubmit={onSubmit}>
  *          {wizard.currentStep === 'first' && (
- *            <div className="mb-6">
+ *            <div>
  *              <label
  *                htmlFor="firstName"
  *                id="firstName-label"
- *                className="block mb-2"
  *              >
  *                First Name:
  *              </label>
  *              <input
- *                className="border-2 border-solid border-gray-600 px-4 py-2"
  *                type="text"
  *                name="firstName"
  *                id="firstName"
@@ -49,16 +42,14 @@ import { createWizard, FlowStep, BaseValues } from "robo-wizard";
  *          )}
 
  *          {wizard.currentStep === 'second' && (
- *            <div className="mb-6">
+ *            <div>
  *              <label
  *                htmlFor="lastName"
  *                id="lastName-label"
- *                className="block mb-2"
  *              >
  *                Last Name:
  *              </label>
  *              <input
- *                className="border-2 border-solid border-gray-600 px-4 py-2"
  *                type="text"
  *                name="lastName"
  *                id="lastName"
@@ -69,23 +60,23 @@ import { createWizard, FlowStep, BaseValues } from "robo-wizard";
  *          )}
 
  *          {wizard.currentStep === 'third' && (
- *            <div className="mb-6">
- *              <p className="text-green-600">
+ *            <div>
+ *              <p>
  *                Welcome {wizard.currentValues.firstName}{' '}
  *                {wizard.currentValues.lastName}!
  *              </p>
  *            </div>
  *          )}
 
- *          <div className="flex w-32 justify-between">
+ *          <div>
  *            <button
  *              type="button"
+ *              role="link"
  *              onClick={() => wizard.goToPreviousStep()}
- *              className="p-3 mr-4"
  *            >
  *              Previous
  *            </button>
- *            <button type="submit" className="py-3 px-8 border-2 border-gray-900">
+ *            <button type="submit">
  *              Next
  *            </button>
  *          </div>
@@ -93,7 +84,7 @@ import { createWizard, FlowStep, BaseValues } from "robo-wizard";
  *      </div>
  *    );
  *  };
- * ````
+ * ```
  * */
 export function useWizard<Values extends object = BaseValues>(
   steps: FlowStep<Values>[],

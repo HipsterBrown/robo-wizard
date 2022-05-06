@@ -1,0 +1,17 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  align-items: baseline;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+}

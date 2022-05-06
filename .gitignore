@@ -6,5 +6,6 @@ examples/**/package-lock.json
 examples/**/pnpm-lock.yaml
 examples/**/.cache
 examples/**/.parcel-cache
-docs/
+docs/build/
+docs/docs/api/
 _site/

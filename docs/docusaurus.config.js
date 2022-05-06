@@ -57,8 +57,7 @@ const config = {
             'https://github.com/HipsterBrown/robo-wizard/docs/docs/',
         },
         blog: {
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
+          showReadingTime: false,
           editUrl:
             'https://github.com/HipsterBrown/robo-wizard/docs/blog/',
         },

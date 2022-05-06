@@ -1,12 +1,8 @@
----
-sidebar_position: 1
----
+# Robo Wizard
 
-# Overview
+A library for building multi-step workflows backed by a state machine using [@xstate/fsm](https://xstate.js.org/docs/packages/xstate-fsm/).
 
-Robo Wizard is a library and collection of packages for building multi-step workflows backed by a state machine using [@xstate/fsm](https://xstate.js.org/docs/packages/xstate-fsm/).
-
-## Installation
+**Installation**
 
 This package is written in TypeScript so type definitions are included by default:
 
@@ -22,9 +18,7 @@ pnpm install robo-wizard
 yarn add robo-wizard
 ```
 
-## Usage
-
-### Basics
+**Basic usage:**
 
 ```typescript
 import { createWizard } from 'robo-wizard';
@@ -47,7 +41,7 @@ wizard.goToPreviousStep();
 console.log(wizard.currentStep); // second
 ```
 
-### Gathering Values
+**Gathering values:**
 
 ```typescript
 import { createWizard } from 'robo-wizard';
@@ -70,7 +64,7 @@ wizard.goToPreviousStep({ values: { firstName: '', lastName: '' } });
 console.log(wizard.currentValues); // { firstName: '', lastName: '' }
 ```
 
-### Navigation
+**Navigation**
 
 In order to act as a good web citizen, robo-wizard provides a way to integrate with client-side routing APIs for steps that map to real URL paths.
 
@@ -109,6 +103,3 @@ console.log(wizard.currentValues); // { firstName: '', lastName: '' }
 
 While the above example demonstrates using the [History API](http://developer.mozilla.org/en-US/docs/Web/API/History_API), see the examples directory for how the [`history`](https://www.npmjs.com/package/history) and [`react-router`](https://www.npmjs.com/package/react-router) packages can be integrated.
 
-## Examples
-
-Check out the [examples](https://github.com/HipsterBrown/robo-wizard/tree/main/examples) directory to see a sample of usage with HTML and a few framework integrations.

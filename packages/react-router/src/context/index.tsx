@@ -66,7 +66,7 @@ function isReactElement(child: ReactNode): child is ReactElement {
  *           />
  *         </div>
  *         <div>
- *           <button type="button" onClick={() => wizard.goToPreviousStep()}role="link" >Previous</button>
+ *           <button type="button" onClick={() => wizard.goToPreviousStep()} role="link">Previous</button>
  *           <button type="submit">Next</button>
  *         </div>
  *       </form>

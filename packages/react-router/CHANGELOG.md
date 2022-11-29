@@ -1,3 +1,10 @@
+## @robo-wizard/react-router [1.0.2](https://github.com/HipsterBrown/robo-wizard/compare/@robo-wizard/react-router@1.0.1...@robo-wizard/react-router@1.0.2) (2022-11-29)
+
+
+### Bug Fixes
+
+* **react-router:** group index redirect route with steps config ([#33](https://github.com/HipsterBrown/robo-wizard/issues/33)) ([29073ce](https://github.com/HipsterBrown/robo-wizard/commit/29073ce47b4bcdd762a85222178fa492fc6c7ff6))
+
 ## @robo-wizard/react-router [1.0.1](https://github.com/HipsterBrown/robo-wizard/compare/@robo-wizard/react-router@1.0.0...@robo-wizard/react-router@1.0.1) (2022-11-29)
 
 

@@ -102,7 +102,9 @@ export function Wizard<Values extends object = BaseValues>({ children, initialVa
 
   return (
     <WizardContext.Provider value={Object.create(wizard)}>
-      {step}
+      <>
+        {step}
+      </>
       <Routes>
         <Route index={true} element={<Navigate to={String(steps[0]?.name)} replace={true} />} />
       </Routes>

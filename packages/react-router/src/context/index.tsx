@@ -91,7 +91,12 @@ export function Wizard<Values extends object = BaseValues>({ children, initialVa
       navigate(wizard.currentStep);
     }
   });
-  const step = useRoutes(steps)
+  const stepsWithRedirect = steps.concat({
+    index: true,
+    element: (<Navigate to={String(steps[0]?.name)} replace={true} />),
+    path: "/"
+  });
+  const step = useRoutes(stepsWithRedirect)
   const stepFromLocation = location.pathname.split('/').pop();
 
   useEffect(() => {
@@ -102,12 +107,7 @@ export function Wizard<Values extends object = BaseValues>({ children, initialVa
 
   return (
     <WizardContext.Provider value={Object.create(wizard)}>
-      <>
-        {step}
-      </>
-      <Routes>
-        <Route index={true} element={<Navigate to={String(steps[0]?.name)} replace={true} />} />
-      </Routes>
+      {step}
     </WizardContext.Provider>
   )
 }

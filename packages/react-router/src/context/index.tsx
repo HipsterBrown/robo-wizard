@@ -1,5 +1,5 @@
 import { Children, createContext, useContext, useEffect, PropsWithChildren, ReactNode, ReactElement } from 'react';
-import { Route, Routes, useNavigate, useRoutes, Navigate, useLocation } from 'react-router';
+import { useNavigate, useRoutes, Navigate, useLocation, RouteObject } from 'react-router';
 import type { RoboWizard, BaseValues, StepConfig } from 'robo-wizard'
 import { useWizard } from '@robo-wizard/react'
 import { Step } from '../components'
@@ -78,9 +78,9 @@ function isReactElement(child: ReactNode): child is ReactElement {
 export function Wizard<Values extends object = BaseValues>({ children, initialValues = {} as Values }: WizardProviderProps<Values>) {
   if (typeof children !== 'object' || children === null) throw new Error('WizardProvider must have at least one child Step component')
 
-  const steps = Children.map(children, child => {
+  const steps: Array<StepConfig<Values> & RouteObject> = Children.map(children, child => {
     if (isReactElement(child) && child.type === Step) {
-      return { ...child.props as StepConfig, path: child.props.name as string };
+      return { ...child.props as StepConfig<Values>, path: child.props.name as string };
     }
     return null;
   })?.filter(Boolean) ?? [];
@@ -94,7 +94,8 @@ export function Wizard<Values extends object = BaseValues>({ children, initialVa
   const stepsWithRedirect = steps.concat({
     index: true,
     element: (<Navigate to={String(steps[0]?.name)} replace={true} />),
-    path: "/"
+    path: "/",
+    name: 'index-redirect'
   });
   const step = useRoutes(stepsWithRedirect)
   const stepFromLocation = location.pathname.split('/').pop();

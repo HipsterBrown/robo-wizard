@@ -1,3 +1,10 @@
+## @robo-wizard/react-router [1.0.1](https://github.com/HipsterBrown/robo-wizard/compare/@robo-wizard/react-router@1.0.0...@robo-wizard/react-router@1.0.1) (2022-11-29)
+
+
+### Bug Fixes
+
+* wrap routed steps in Fragment to avoid keyed children warning ([#29](https://github.com/HipsterBrown/robo-wizard/issues/29)) ([d0f6f77](https://github.com/HipsterBrown/robo-wizard/commit/d0f6f77a0276d57ff9692ece3fa602dd749d20b3))
+
 # @robo-wizard/react-router 1.0.0 (2022-05-05)
 
 

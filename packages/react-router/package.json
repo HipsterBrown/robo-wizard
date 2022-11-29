@@ -1,6 +1,6 @@
 {
   "name": "@robo-wizard/react-router",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "RoboWizard components and hooks for react-router",
   "main": "./dist/robo-wizard_react-router.umd.js",
   "module": "./dist/robo-wizard_react-router.es.js",

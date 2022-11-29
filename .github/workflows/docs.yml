@@ -14,9 +14,9 @@ jobs:
           persist-credentials: false
 
       - name: pnpm setup
-        uses: pnpm/action-setup@v2.0.1
+        uses: pnpm/action-setup@v2.2.4
         with:
-          version: 7.0.0
+          version: 7.17.1
 
       - name: Use Node.js
         uses: actions/setup-node@v3

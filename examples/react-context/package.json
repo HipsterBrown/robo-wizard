@@ -1,0 +1,21 @@
+{
+  "name": "robo-wizard-react-context-example",
+  "version": "0.0.0-example",
+  "description": "An example usage of robo-wizard with React Context",
+  "scripts": {
+    "start": "vite"
+  },
+  "author": "HipsterBrown",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@robo-wizard/react": "workspace:*",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.8",
+    "@types/react-dom": "^18.0.3",
+    "@vitejs/plugin-react": "^1.3.2",
+    "vite": "^2.9.8"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "@robo-wizard/react",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "RoboWizard components and hooks for React",
   "main": "./dist/robo-wizard_react.umd.js",
   "module": "./dist/robo-wizard_react.es.js",
@@ -38,7 +38,7 @@
     "directory": "packages/react"
   },
   "dependencies": {
-    "robo-wizard": "^1.1.0"
+    "robo-wizard": "1.2.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",

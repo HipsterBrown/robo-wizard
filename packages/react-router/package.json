@@ -1,6 +1,6 @@
 {
   "name": "@robo-wizard/react-router",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "RoboWizard components and hooks for react-router",
   "main": "./dist/robo-wizard_react-router.umd.js",
   "module": "./dist/robo-wizard_react-router.es.js",
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "robo-wizard": "1.2.0",
-    "@robo-wizard/react": "1.0.0"
+    "@robo-wizard/react": "1.1.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",

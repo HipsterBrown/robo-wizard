@@ -1,3 +1,13 @@
+## @robo-wizard/react-router [1.0.3](https://github.com/HipsterBrown/robo-wizard/compare/@robo-wizard/react-router@1.0.2...@robo-wizard/react-router@1.0.3) (2022-12-20)
+
+
+
+
+
+### Dependencies
+
+* **@robo-wizard/react:** upgraded to 1.1.0
+
 ## @robo-wizard/react-router [1.0.2](https://github.com/HipsterBrown/robo-wizard/compare/@robo-wizard/react-router@1.0.1...@robo-wizard/react-router@1.0.2) (2022-11-29)
 
 

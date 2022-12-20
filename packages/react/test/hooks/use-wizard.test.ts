@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { act, renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react'
 import { useWizard } from '../../src/hooks/use-wizard'
 
 describe('useWizard', () => {
